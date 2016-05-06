@@ -6,17 +6,25 @@ public class LocationConnection : MonoBehaviour {
     private LineRenderer line;
 	
 
-	void Start () {
+	void Awake () {
         line = gameObject.GetComponent<LineRenderer>();
         SetPositions();
 	}
+
+    public void SetLocations(GameObject[] newLocations)
+    {
+        locations = newLocations;
+        SetPositions();
+    }
 
     void SetPositions()
     {
         for (int i = 0; i < locations.Length; i++)
         {
-            //line.Positions[i] = locations[i].transform.position;
-            line.SetPosition(i, locations[i].transform.position);
-        }
+            if (locations[i])
+            {
+                line.SetPosition(i, locations[i].transform.position);
+            }
+        }   
     }
 }

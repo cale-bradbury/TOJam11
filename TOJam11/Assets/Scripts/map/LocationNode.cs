@@ -3,7 +3,9 @@ using System.Collections;
 using UnityEditor;
 
 public class LocationNode : MonoBehaviour {
+    //public Encounter encounter; whatever we decide events/battles/locations are, this can reference the one that is activated when a location is reached by the player.
     public GameObject[] ConnectedLocations;
+    public GameObject connectionPrefab;
     public GameObject[] Connections;
 
     void Start () {
@@ -17,10 +19,8 @@ public class LocationNode : MonoBehaviour {
     }
 
     void ConnectToLocation(GameObject location) {
-
-        // create a new game object
-            // attach a line renderer
-            // set the points of the line renderer to connect this transform with location's transform
-
+        GameObject[] locations = { gameObject, location };
+        GameObject connection = Instantiate(connectionPrefab);
+        connection.GetComponent<LocationConnection>().SetLocations(locations);
     }
 }
