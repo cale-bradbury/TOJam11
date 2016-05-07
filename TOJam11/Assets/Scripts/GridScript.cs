@@ -17,7 +17,23 @@ public class GridScript : MonoBehaviour {
     {
         grid = ArrayUtils.Create2D<GameObject>((GameObject)null, Mathf.FloorToInt(gridSize.x), Mathf.FloorToInt(gridSize.y));
         gridTiles = ArrayUtils.Create2D<GridTile>(AddTile, Mathf.FloorToInt(gridSize.x), Mathf.FloorToInt(gridSize.y));
+        UpdateGridObjectPositions();
 	}
+
+    void UpdateGridObjectPositions()
+    {
+        for (int i = 0; i < grid.GetLength(0); i++)
+        {
+            for (int j = 0; j < grid.GetLength(1); j++)
+            {
+                if (grid[i, j] != null)
+                {
+                    grid[i, j].transform.parent = gridTiles[i, j].transform;
+                    grid[i, j].transform.localPosition = Vector3.zero;
+                }
+            }
+        }
+    }
 
     GridTile AddTile(int x, int y)
     {
