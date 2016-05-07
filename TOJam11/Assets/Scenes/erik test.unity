@@ -544,6 +544,14 @@ Prefab:
       propertyPath: m_Name
       value: Start
       objectReference: {fileID: 0}
+    - target: {fileID: 11493424, guid: 2a48463b448a0d3498f489d459b3f27f, type: 2}
+      propertyPath: start
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493424, guid: 2a48463b448a0d3498f489d459b3f27f, type: 2}
+      propertyPath: isStart
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a48463b448a0d3498f489d459b3f27f, type: 2}
   m_IsPrefabParent: 0
@@ -1058,6 +1066,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2118860575}
+  - 114: {fileID: 2118860576}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -1089,3 +1098,17 @@ Transform:
   - {fileID: 707758442}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &2118860576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118860574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 319e285ab77d56d4ea6096e677fcea5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNodePrefab: {fileID: 192156, guid: 517c7b63a65b64743ba52615c4b51a3a, type: 2}
+  playerNode: {fileID: 0}
+  nodes: []
