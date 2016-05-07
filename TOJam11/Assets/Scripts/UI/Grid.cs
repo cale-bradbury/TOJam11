@@ -57,11 +57,11 @@ public class Grid : MonoBehaviour {
             selectionCallback = null;
         }
     }
-
-    public void ShowSelection(List<GridTile> tiles, GridClick callback)
+    
+    public void ShowSelection(List<GridTile> tiles, GridClick callback, Color color)
     {
         selection = tiles;
-        ColorSelection(tiles, Color.green);
+        ColorSelection(tiles, color);
         selectionCallback = callback;
     }
 

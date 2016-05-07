@@ -16,12 +16,12 @@ public class Lens<T>
 
 public class LensedValue<T>
 {
-    T value;
+    public T initialValue;
     List<Lens<T>> lenses;
 
     public LensedValue(T initialValue)
     {
-        this.value = initialValue;
+        this.initialValue = initialValue;
         this.lenses = new List<Lens<T>>();
     }
 
@@ -35,7 +35,7 @@ public class LensedValue<T>
 
     public T GetValue()
     {
-        T tmp = (T)(value.GetType() == typeof(ICloneable) ? ((ICloneable)value).Clone() : value);
+        T tmp = (T)(initialValue.GetType() == typeof(ICloneable) ? ((ICloneable)initialValue).Clone() : initialValue);
         lenses.Sort((x, y) => x.priority - y.priority);
         foreach (var lens in lenses)
         {
