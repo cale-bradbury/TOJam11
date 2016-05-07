@@ -30,7 +30,6 @@ public class LocationNode : MonoBehaviour {
         bool requiresConnection = !HasConnectionFor(location);
         bool otherRequiresConnection = !otherLocation.HasConnectionFor(gameObject);
         bool requiresNewConnection = requiresConnection && otherRequiresConnection;
-        int connectionIndex = Utils.FindInArray(ConnectedLocations, location);
 
         // If neither gameObject has a connection reference for this pair of linked locations, createa a new one
         if (requiresNewConnection) {
