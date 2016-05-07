@@ -5,9 +5,13 @@ public class LocationNode : MonoBehaviour {
     public string locationName;
     public string description;
     public bool isStart = false;
+    public float encounterChance = 0f;      // Percenatage chance of an encounter taking place while approaching this node.
     [HideInInspector]
     public  List<LocationConnection> Connections = new List<LocationConnection>();
+    [HideInInspector]
     public PlayerNode playerNode = null;
+    [HideInInspector]
+    public MapController map = null;
     private Renderer rend = null;
     private Color activeColor = Color.green;
     private Color hoverColor = Color.cyan;
@@ -23,7 +27,7 @@ public class LocationNode : MonoBehaviour {
 
     void OnMouseOver()
     {       
-        if(isSelectable)
+        if(isSelectable && !map.isPaused)
         {
             HandleClick();
             HandleHoverOver();
@@ -94,5 +98,15 @@ public class LocationNode : MonoBehaviour {
     void SetColor(Color color)
     {
         rend.material.color = color;
+    }
+
+    public void RandomEncounter() {
+        if(Random.value * 100f < encounterChance)
+        {
+            Debug.Log("There's going to be a fight!");
+            map.SetPause(true);
+            // need to handle changing between encounter and map.
+            
+        }
     }
 }

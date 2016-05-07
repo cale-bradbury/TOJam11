@@ -4,11 +4,19 @@ using System.Collections.Generic;
 public class MapController : MonoBehaviour {
     public GameObject playerNodePrefab;
     [HideInInspector]
+    public bool isPaused = false;
+    [HideInInspector]
     public PlayerNode playerNode;
+    [HideInInspector]
     public LocationNode[] nodes;
+    
 
-	void Start () {
+
+    void Start () {
         nodes = FindObjectsOfType(typeof(LocationNode)) as LocationNode[];
+        foreach (LocationNode node in nodes) {
+            node.map = this;
+        }
         SpawnPlayerNode();        
     }
 
@@ -40,5 +48,9 @@ public class MapController : MonoBehaviour {
         {
             n.Reset();
         }
+    }
+
+    public void SetPause(bool val) {
+        isPaused = val;
     }
 }

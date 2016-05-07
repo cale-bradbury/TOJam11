@@ -6,10 +6,14 @@ public class PlayerNode : MonoBehaviour {
     [HideInInspector]
     public MapController map = null;
     private LocationNode targetLocation = null;
+    private float targetHalfwayDistance = 0f;
     private LocationNode currentLocation = null;
 
     void FixedUpdate() {
-        MoveToLocation();
+        if (!map.isPaused)
+        {
+            MoveToLocation();
+        }
     }
     
     void MoveToLocation()
@@ -18,6 +22,14 @@ public class PlayerNode : MonoBehaviour {
             float distance = Vector3.Distance(transform.position, targetLocation.transform.position);
             float speed = moveSpeed / 100 / Mathf.Sqrt(distance);
             transform.position = Vector3.Lerp(transform.position, targetLocation.transform.position, speed);
+
+            if(distance < targetHalfwayDistance)
+            {
+                // check for encounter
+                targetLocation.RandomEncounter();
+                targetHalfwayDistance = 0f;
+            }
+
             if(distance < 0.05f)
             {
                 SetLocation(targetLocation);
@@ -30,6 +42,7 @@ public class PlayerNode : MonoBehaviour {
     {
         map.ResetLocations();
         targetLocation = node;
+        targetHalfwayDistance = Vector3.Distance(transform.position, node.transform.position) / 2;
     }
 
     public void SetLocation(LocationNode node) {
