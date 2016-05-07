@@ -5,9 +5,8 @@ public class LocationNode : MonoBehaviour {
     public string locationName;
     public string description;
     public bool isStart = false;
-    //[HideInInspector]
-    public  List<LocationConnection> Connections = new List<LocationConnection>();
     [HideInInspector]
+    public  List<LocationConnection> Connections = new List<LocationConnection>();
     public PlayerNode playerNode = null;
     private bool isSelectable = false;       // Set to true if the player can move to this location.
     private bool isActive = false;           // Set to true if the player is at this location.
