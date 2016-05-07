@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 public class ButtonList : MonoBehaviour {
-
+    RectTransform rt;
     public GameObject buttonPrefab;
     public RectTransform buttonParent;
     List<Button> buttons;
@@ -34,6 +34,7 @@ public class ButtonList : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        rt = GetComponent<RectTransform>();
         scroll = GetComponent<ScrollRect>();
         buttons = new List<Button>();
 	}
@@ -50,7 +51,7 @@ public class ButtonList : MonoBehaviour {
     }
 
     public delegate void ButtonCallback() ;
-    public void Add(string s, ButtonCallback callback, ButtonCallback hoverCallback){
+    public void Add(string s, ButtonCallback callback){
         GameObject g = Instantiate<GameObject>(buttonPrefab);
         g.transform.SetParent(buttonParent);
         Button b = g.GetComponent<Button>();

@@ -8,7 +8,9 @@ public class CarModifier : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        GetComponentInParent<Car>();
+        car = GetComponentInParent<Car>();
+        if (car == null)
+            car = car = GetComponent<Car>();
 	}
 	
 	// Update is called once per frame

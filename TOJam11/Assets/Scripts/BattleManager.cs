@@ -41,6 +41,12 @@ public class BattleManager : MonoBehaviour {
         else
             instance.enemyCars.Add(c);
 	}
+    public static void DestroyCar(Car c)
+    {
+        instance.enemyCars.Remove(c);
+        instance.playerCars.Remove(c);
+        Destroy(c.gameObject);
+    }
 
     public void DisplayMoves(Car c)
     {
@@ -56,9 +62,6 @@ public class BattleManager : MonoBehaviour {
                     c.AP -= a.ap;
                     list.Clear();
                     a.Perform(FinishedAction);
-                }, () =>
-                {
-
                 });
         }
     }
@@ -70,13 +73,13 @@ public class BattleManager : MonoBehaviour {
 
     public void SelectCar()
     {
-        list.Clear();
         List<Car> cars = GetValidCars(turn == Turn.Enemy ? enemyCars : playerCars);
         if (cars.Count == 0)
         {
             NextTurn();
             return;
         }
+
         if (turn == Turn.Enemy||autoPlay)
         {
             CarAction[] actions = cars[0].GetComponentsInChildren<CarAction>();
@@ -86,12 +89,19 @@ public class BattleManager : MonoBehaviour {
         }
         else
         {
+            List<GridTile> select = new List<GridTile>();
             for (int i = 0; i < cars.Count; i++)
             {
-                Car c = cars[i];
-                list.Add(c.name, () => { DisplayMoves(c); });
+                select.Add(cars[i].tile);
             }
+            grid.ShowSelection(select, OnCarSelect, Color.white);
+            
         }
+    }
+
+    void OnCarSelect(GridTile tile)
+    {
+        DisplayMoves(tile.car);
     }
 
     List<Car> GetValidCars(List<Car> cars)

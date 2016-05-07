@@ -11,6 +11,7 @@ public class GridTile : MonoBehaviour {
     public int x;
     [HideInInspector]
     public int y;
+    CarStats stats;
 
     public Car car
     {
@@ -25,6 +26,7 @@ public class GridTile : MonoBehaviour {
 
     void Start()
     {
+        stats = FindObjectOfType<CarStats>();
         mat = GetComponent<Renderer>().material;
         mat.color = targetColor;
     }
@@ -46,11 +48,14 @@ public class GridTile : MonoBehaviour {
             }
         }
         mat.color = Color.Lerp(mat.color, targetColor, .5f);
+        if (car!=null)
+            car.color = mat.color;
     }
 
     void OnMouseEnter()
     {
         hovering = true;
+        stats.ShowStats(car);
     }
 
     void OnMouseExit()
