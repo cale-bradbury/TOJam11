@@ -17,9 +17,22 @@ public class Car : MonoBehaviour {
     }
 
     public bool isPlayer;
-    public float AP;
-    public float maxAP;
+    public float AP = 0;
+    public CarAction[] actions;
 
+    public LensedValue<float> health;
+    public LensedValue<float> maxHealth;
+    public LensedValue<float> maxAP;
+    public LensedValue<float> turnAP;
+
+    void Awake()
+    {
+        health = new LensedValue<float>(0);
+        maxHealth = new LensedValue<float>(0);
+        health.AddLens(new Lens<float>(int.MaxValue, (x) => Mathf.Max(x, maxHealth.GetValue())));
+        maxAP = new LensedValue<float>(0);
+        turnAP = new LensedValue<float>(0);
+    }
 
     void MoveTile(GridTile t)
     {
@@ -38,10 +51,16 @@ public class Car : MonoBehaviour {
 
     public bool HasEnoughAP()
     {
-        CarAction[] actions = GetComponentsInChildren<CarAction>();
+        actions = GetComponentsInChildren<CarAction>();
         foreach (CarAction c in actions)
             if (c.ap <= AP)
                 return true;
         return false;
+    }
+
+    void BeginTurn(Car c)
+    {
+        AP += turnAP.GetValue();
+        AP = Mathf.Max(AP, maxAP.GetValue());
     }
 }

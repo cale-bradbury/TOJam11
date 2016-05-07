@@ -14,6 +14,11 @@ public class CAMoveWarp : CarAction {
         GetTile();
     }
 
+    public override void PerformAI(CarAction.ActionCallback callback)
+    {
+        Perform(callback);
+    }
+
     void GetTile()
     {
         GridTile g = car.tile.grid.GetRandom();
@@ -23,7 +28,7 @@ public class CAMoveWarp : CarAction {
             return;
         }
         car.tile = g;
-        finishedAction();
+        Invoke("EndTurn", .3f);
     }
 
 }

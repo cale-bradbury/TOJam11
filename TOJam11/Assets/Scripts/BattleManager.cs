@@ -8,7 +8,7 @@ public class BattleManager : MonoBehaviour {
         Enemy,
         Enviroment
     }
-    public Turn turn;
+    public Turn turn = Turn.Enemy;
 
     public static BattleManager instance;
     public Grid grid;
@@ -17,7 +17,8 @@ public class BattleManager : MonoBehaviour {
     int index;
     public ButtonList list;
 
-	// Use this for initialization
+    public bool autoPlay = false;
+
 	void Awake () {
         if (instance != null)
         {
@@ -29,10 +30,9 @@ public class BattleManager : MonoBehaviour {
 
     void Start()
     {
-        SelectCar();
+        Invoke("NextTurn", .5f);
     }
 	
-	// Update is called once per frame
     public static void AddCar(Car c, int x, int y, bool isPlayer = true)
     {
         c.tile = instance.grid.GetTile(x,y);
@@ -50,10 +50,15 @@ public class BattleManager : MonoBehaviour {
         {
             CarAction a = actions[i];
             if (c.AP >= a.ap)
-                list.Add(a.name, () => { 
+                list.Add(a.name, () =>
+                {
                     grid.clickTimeout = .1f;
-                    c.AP -= a.ap; 
-                    a.Perform(FinishedAction); 
+                    c.AP -= a.ap;
+                    list.Clear();
+                    a.Perform(FinishedAction);
+                }, () =>
+                {
+
                 });
         }
     }
@@ -66,22 +71,56 @@ public class BattleManager : MonoBehaviour {
     public void SelectCar()
     {
         list.Clear();
-        for (int i = 0; i < playerCars.Count; i++)
+        List<Car> cars = GetValidCars(turn == Turn.Enemy ? enemyCars : playerCars);
+        if (cars.Count == 0)
         {
-            Car c = playerCars[i];
-            if(c.HasEnoughAP())
-                list.Add(c.name, () => { DisplayMoves(c); });
-        }
-        if (list.Length == 0)
             NextTurn();
+            return;
+        }
+        if (turn == Turn.Enemy||autoPlay)
+        {
+            CarAction[] actions = cars[0].GetComponentsInChildren<CarAction>();
+            CarAction a = actions[Mathf.FloorToInt(Random.value * actions.Length)];
+            cars[0].AP -= a.ap;
+            a.PerformAI(FinishedAction);
+        }
+        else
+        {
+            for (int i = 0; i < cars.Count; i++)
+            {
+                Car c = cars[i];
+                list.Add(c.name, () => { DisplayMoves(c); });
+            }
+        }
+    }
+
+    List<Car> GetValidCars(List<Car> cars)
+    {
+        List<Car> valid = new List<Car>();
+        foreach (Car c in cars)
+            if (c.HasEnoughAP())
+                valid.Add(c);
+        return valid;
     }
 
     void NextTurn()
     {
-        if (turn == Turn.Player)
+        List<Car> cars = null;
+        if (turn == Turn.Player){
             turn = Turn.Enemy;
-        else if (turn == Turn.Enemy)
+            cars = enemyCars;
+        }else if (turn == Turn.Enemy){
             turn = Turn.Player;
+            cars = playerCars;
+        }
 
+        if (cars != null)
+        {
+            foreach (Car c in cars)
+            {
+                c.BroadcastMessage("BeginTurn", c);
+            }
+        }
+        SelectCar();
     }
 }

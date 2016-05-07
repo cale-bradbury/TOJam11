@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
 public class ButtonList : MonoBehaviour {
@@ -48,8 +49,8 @@ public class ButtonList : MonoBehaviour {
         buttons = new List<Button>();
     }
 
-    public delegate void ButtonClick() ;
-    public void Add(string s, ButtonClick callback){
+    public delegate void ButtonCallback() ;
+    public void Add(string s, ButtonCallback callback, ButtonCallback hoverCallback){
         GameObject g = Instantiate<GameObject>(buttonPrefab);
         g.transform.SetParent(buttonParent);
         Button b = g.GetComponent<Button>();

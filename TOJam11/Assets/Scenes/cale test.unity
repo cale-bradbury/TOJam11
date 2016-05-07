@@ -251,35 +251,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22409996, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22409996, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22409996, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_SizeDelta.x
-      value: -7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22409996, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_SizeDelta.y
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22499134, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22499134, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_SizeDelta.x
-      value: -7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22495728, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22495728, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_SizeDelta.y
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22406798, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c273006c8af97764c925adb4202f93a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
+  car: {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
   isPlayer: 0
 --- !u!114 &912183995
 MonoBehaviour:
@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c273006c8af97764c925adb4202f93a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
+  car: {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
   isPlayer: 0
 --- !u!114 &1026397054 stripped
 MonoBehaviour:
@@ -527,10 +527,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48d1392e18aa8a41a81da4264b687e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turn: 0
   grid: {fileID: 912183991}
   enemyCars: []
   playerCars: []
   list: {fileID: 1026397054}
+  autoPlay: 0
 --- !u!4 &1278366387
 Transform:
   m_ObjectHideFlags: 0
