@@ -52,7 +52,7 @@ public class PropSpawner : MonoBehaviour {
         }
         
         //prop.transform.position = tempPos;
-        prop.GetComponent<PropScroller>().scrollSpeed = scrollSpeed * 11.25f;
+        prop.GetComponent<PropScroller>().scrollSpeed = scrollSpeed * 11.13f;
     }
 
     bool ShouldSpawnProp() {
