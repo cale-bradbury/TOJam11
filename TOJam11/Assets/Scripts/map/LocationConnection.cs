@@ -1,30 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LocationConnection : MonoBehaviour {
-    public GameObject[] locations;
+public class LocationConnection : MonoBehaviour
+{
+    public LocationNode nodeA;
+    public LocationNode nodeB;
     private LineRenderer line;
 	
 
 	void Awake () {
         line = gameObject.GetComponent<LineRenderer>();
-        SetPositions();
 	}
-
-    public void SetLocations(GameObject[] newLocations)
+    
+    public void SetPositions()
     {
-        locations = newLocations;
-        SetPositions();
+        line.SetPosition(0, nodeA.transform.position);
+        line.SetPosition(1, nodeB.transform.position);  
     }
 
-    void SetPositions()
+    public LocationNode GetOther(LocationNode n)
     {
-        for (int i = 0; i < locations.Length; i++)
-        {
-            if (locations[i])
-            {
-                line.SetPosition(i, locations[i].transform.position);
-            }
-        }   
+        if (n == nodeA)
+            return nodeB;
+        if (n == nodeB)
+            return nodeA;
+        return null;
     }
 }
