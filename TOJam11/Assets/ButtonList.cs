@@ -35,6 +35,8 @@ public class ButtonList : MonoBehaviour {
 
     public void Clear()
     {
+        if (buttons == null)
+            return;
         for (int i = buttons.Count - 1; i >=0; i--)
         {
             Destroy(buttons[i].gameObject);
@@ -44,7 +46,6 @@ public class ButtonList : MonoBehaviour {
 
     public delegate void ButtonClick() ;
     public void Add(string s, ButtonClick callback){
-        int i = buttons.Count;
         GameObject g = Instantiate<GameObject>(buttonPrefab);
         g.transform.SetParent(buttonParent);
         Button b = g.GetComponent<Button>();

@@ -17,6 +17,11 @@ public class BattleManager : MonoBehaviour {
         }
         instance = this;
 	}
+
+    void Start()
+    {
+        Next();
+    }
 	
 	// Update is called once per frame
     public static void AddCar(Car c, int x, int y)
@@ -24,7 +29,6 @@ public class BattleManager : MonoBehaviour {
         Debug.Log(c);
         c.tile = instance.grid.GetTile(x,y);
         instance.cars.Add(c);
-        Next();
 	}
 
     public static void Next()
@@ -40,7 +44,6 @@ public class BattleManager : MonoBehaviour {
     {
         list.Clear();
         CarAction[] actions = c.GetComponentsInChildren<CarAction>();
-        Debug.Log(actions.Length);
         for (int i = 0; i < actions.Length; i++)
         {
             CarAction a = actions[i];

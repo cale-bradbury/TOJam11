@@ -50,7 +50,7 @@ public class Grid : MonoBehaviour {
     {
         if (clickTimeout > 0)
             return;
-        if (selection != null)
+        if (selection != null && selection.IndexOf(tile)!=-1)
         {
             selection = null;
             selectionCallback(tile);
@@ -124,6 +124,23 @@ public class Grid : MonoBehaviour {
     public GridTile GetRandom()
     {
         return gridTiles[Mathf.FloorToInt(Random.value*gridTiles.GetLength(0)), Mathf.FloorToInt(Random.value*gridTiles.GetLength(1))];
+    }
+
+    public void RemoveCarTiles(List<GridTile> g)
+    {
+        for (int i = g.Count - 1; i >= 0; i--)
+        {
+            if (g[i].car != null)
+                g.RemoveAt(i);
+        }
+    }
+    public void RemoveEmptyTiles(List<GridTile> g)
+    {
+        for (int i = g.Count - 1; i >= 0; i--)
+        {
+            if (g[i].car == null)
+                g.RemoveAt(i);
+        }
     }
 	
 }

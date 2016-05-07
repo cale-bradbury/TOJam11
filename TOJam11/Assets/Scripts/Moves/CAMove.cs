@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class CAMove : CarAction {
 
@@ -7,12 +7,18 @@ public class CAMove : CarAction {
 
    override public void Perform(){
        base.Perform();
-       Debug.Log(car.tile);
-       car.tile.grid.ShowSelection(car.tile.grid.GetSuroundingDiamond(car.tile, distance), SelectCallback);
+       List<GridTile> g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
+       car.tile.grid.RemoveCarTiles(g);
+       car.tile.grid.ShowSelection(g, SelectCallback);
    }
 
    void SelectCallback(GridTile selection)
    {
+       if (selection.car != null)
+       {
+           Perform();
+           return;
+       }
        car.tile = selection;
        BattleManager.Next();
    }
