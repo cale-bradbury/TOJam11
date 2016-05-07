@@ -109,4 +109,21 @@ public class Utils {
 			onFinish ();
 	}
 
+    public static bool CompareLists<T>(List<T> a, List<T> b) {
+        var areEqual = false;
+        if(a.Count == b.Count)
+        {
+            areEqual = true;
+            for (var i = 0; i < a.Count; i++)
+            {
+                if (!b.Contains(a[i]))
+                {
+                    areEqual = false;
+                    break;
+                }
+            }
+        }
+        return areEqual;
+    }
+
 }
