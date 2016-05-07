@@ -175,7 +175,7 @@ MonoBehaviour:
   smallPropPrefabs:
   - {fileID: 129504, guid: 7ee9894ddd12ea044a18f85bd28d8695, type: 2}
   largePropPrefabs:
-  - {fileID: 122890, guid: 50a63bc1933b26a4ba16243ef195cfd2, type: 2}
+  - {fileID: 172768, guid: 50a63bc1933b26a4ba16243ef195cfd2, type: 2}
   spawnRate: 0.5
   minSpawnChance: 0.1
   maxSpawnChance: 0.5

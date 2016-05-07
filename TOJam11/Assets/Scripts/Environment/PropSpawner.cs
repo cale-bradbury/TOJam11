@@ -35,23 +35,19 @@ public class PropSpawner : MonoBehaviour {
         float xPos;
         bool small = Random.value < spawnSmallPropChance;
         GameObject prop;
-
         Vector3 tempPos = transform.position;        
         tempPos.z = 20f;    // TODO: this is just random right now. This value should be be related to screen size or something.
         if (small)
         {
             xPos = Random.Range(smallPropSpawn[0], smallPropSpawn[1]);
             tempPos.x = Random.value > 0.5 ? xPos : -xPos;
-            Debug.Log(xPos);
-            Debug.Log(tempPos);
             prop = Instantiate(ArrayUtils.getRandom<GameObject>(smallPropPrefabs), tempPos, Quaternion.identity) as GameObject;          
         } else {
             xPos = Random.Range(largePropSpawn[0], largePropSpawn[1]);
             tempPos.x = Random.value > 0.5 ? xPos : -xPos;
             prop = Instantiate(ArrayUtils.getRandom<GameObject>(largePropPrefabs), tempPos, Quaternion.identity) as GameObject;
         }
-        
-        //prop.transform.position = tempPos;
+        prop.transform.parent = transform;
         prop.GetComponent<PropScroller>().scrollSpeed = scrollSpeed * 11.13f;
     }
 
