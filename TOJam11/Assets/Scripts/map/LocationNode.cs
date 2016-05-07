@@ -54,12 +54,9 @@ public class LocationNode : MonoBehaviour {
 
     public void Activate() {
         isActive = true;
-        Debug.Log("Activate!");
-        Debug.Log(Connections.Count);
         for(var i = 0; i < Connections.Count; i++)
         {
             Connections[i].GetOther(this).SetSelectability(true);
-            Debug.Log(Connections[i].GetOther(this).locationName);
         }
     }
 
@@ -71,7 +68,6 @@ public class LocationNode : MonoBehaviour {
     public void SetSelectability(bool val)
     {
         isSelectable = val;
-        Debug.Log(locationName + " selectability is " + val);
         // change appearance based on new value
     }
 }
