@@ -12,6 +12,11 @@ public class MapInspector : EditorWindow
         window.Show();
     }
 
+    void OnSelectionChange()
+    {
+        Repaint();
+    }
+
     void OnGUI()
     {
 
@@ -33,6 +38,13 @@ public class MapInspector : EditorWindow
             EditorGUILayout.LabelField("please select 2 connectionNodes");
             return;
         }
+        for (int i = n1.Connections.Count - 1; i > -1; i--)
+            if (n1.Connections[i] == null)
+                n1.Connections.RemoveAt(i);
+        for (int i = n2.Connections.Count - 1; i > -1; i--)
+            if (n2.Connections[i] == null)
+                n2.Connections.RemoveAt(i);
+
 
         LocationConnection connection = null;
         for (int i = 0; i < n1.Connections.Count; i++)

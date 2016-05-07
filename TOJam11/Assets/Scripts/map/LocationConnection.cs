@@ -7,13 +7,9 @@ public class LocationConnection : MonoBehaviour
     public LocationNode nodeB;
     private LineRenderer line;
 	
-
-	void Awake () {
-        line = gameObject.GetComponent<LineRenderer>();
-	}
-    
     public void SetPositions()
     {
+        line = gameObject.GetComponent<LineRenderer>();
         line.SetPosition(0, nodeA.transform.position);
         line.SetPosition(1, nodeB.transform.position);  
     }
