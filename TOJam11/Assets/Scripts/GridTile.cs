@@ -4,7 +4,7 @@ using System.Collections;
 public class GridTile : MonoBehaviour {
 
     [HideInInspector]
-    public GridScript grid;
+    public Grid grid;
     [HideInInspector]
     public bool hovering = false;
     [HideInInspector]

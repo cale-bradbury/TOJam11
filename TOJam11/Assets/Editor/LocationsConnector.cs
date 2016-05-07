@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEditor;
 
-public class MapInspector : EditorWindow
+public class LocationsConnector : EditorWindow
 {
+    public GameObject connectionParent;
     public GameObject connectionPrefab;
-    [MenuItem ("Car/MapBuilder")]
+    [MenuItem ("Car/LocationConnectorWindow")]
     static void Init()
     {
-        MapInspector window = (MapInspector)EditorWindow.GetWindow<MapInspector>();
+        LocationsConnector window = (LocationsConnector)EditorWindow.GetWindow<LocationsConnector>();
         window.Show();
     }
 
@@ -19,7 +20,7 @@ public class MapInspector : EditorWindow
 
     void OnGUI()
     {
-
+        connectionParent = (GameObject) EditorGUILayout.ObjectField("Connection Parent", connectionParent, typeof(GameObject));
         connectionPrefab = (GameObject) EditorGUILayout.ObjectField("Connection Prefab", connectionPrefab, typeof(GameObject));
 
         GameObject[] selected = Selection.gameObjects;
@@ -68,6 +69,7 @@ public class MapInspector : EditorWindow
             if (GUILayout.Button("Create Link"))
             {
                 GameObject g = Instantiate<GameObject>(connectionPrefab);
+                g.transform.parent = connectionParent.transform;
                 connection = g.GetComponent<LocationConnection>();
                 connection.nodeA = n1;
                 connection.nodeB = n2;

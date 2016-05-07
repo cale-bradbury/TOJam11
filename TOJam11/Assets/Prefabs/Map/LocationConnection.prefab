@@ -40,9 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2483128b73c580d49ac73326b26b8381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locations:
-  - {fileID: 0}
-  - {fileID: 0}
+  nodeA: {fileID: 0}
+  nodeB: {fileID: 0}
 --- !u!120 &12090504
 LineRenderer:
   m_ObjectHideFlags: 1

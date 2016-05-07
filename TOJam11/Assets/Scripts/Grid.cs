@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GridScript : MonoBehaviour {
+public class Grid : MonoBehaviour {
 
     public Vector2 gridSize;
     public float unitSize = 1;
@@ -10,6 +10,9 @@ public class GridScript : MonoBehaviour {
 
     public GameObject gridTilePrefab;
     GridTile[,] gridTiles;
+    List<GridTile> selection;
+    public delegate void GridClick(GridTile tile);
+    GridClick selectionCallback;
 
 
 	// Use this for initialization
@@ -19,6 +22,13 @@ public class GridScript : MonoBehaviour {
         gridTiles = ArrayUtils.Create2D<GridTile>(AddTile, Mathf.FloorToInt(gridSize.x), Mathf.FloorToInt(gridSize.y));
         UpdateGridObjectPositions();
 	}
+
+    public void AddCar(GameObject g, int x, int y)
+    {
+        g = Instantiate<GameObject>(g);
+        grid[x, y] = g;
+        UpdateGridObjectPositions();
+    }
 
     void UpdateGridObjectPositions()
     {
@@ -49,15 +59,21 @@ public class GridScript : MonoBehaviour {
 
     public void Click(GridTile tile)
     {
-        List<GridTile> tiles = GetSuroundingDiamond(tile, 3);
-        foreach (GridTile t in tiles)
+        if (selection != null)
         {
-            t.targetColor = Color.green;
-            t.Invoke("OnMouseExit", 1);
+            selection = null;
+            selectionCallback(tile);
+            selectionCallback = null;
         }
     }
 
-    List<GridTile> GetSuroundingDiamond(GridTile tile, int dist)
+    public void ShowSelection(List<GridTile> tiles, GridClick callback)
+    {
+        selection = tiles;
+        selectionCallback = callback;
+    }
+
+    public List<GridTile> GetSuroundingDiamond(GridTile tile, int dist)
     {
         List<GridTile> tiles = new List<GridTile>();
         for (int i = -dist; i <= dist; i++)
@@ -72,7 +88,7 @@ public class GridScript : MonoBehaviour {
         }
         return tiles;
     }
-    List<GridTile> GetSuroundingSquare(GridTile tile, int dist)
+    public List<GridTile> GetSuroundingSquare(GridTile tile, int dist)
     {
         List<GridTile> tiles = new List<GridTile>();
         for (int i = Mathf.Max(0, tile.x - dist); i < Mathf.Min(gridTiles.GetLength(0), tile.x + dist + 1); i++)
@@ -85,7 +101,7 @@ public class GridScript : MonoBehaviour {
         return tiles;
     }
 
-    List<GridTile> GetSuroundingDistance(GridTile tile, int dist)
+    public List<GridTile> GetSuroundingDistance(GridTile tile, int dist)
     {
         List<GridTile> tiles = new List<GridTile>();
         for (int i = 0; i < gridTiles.GetLength(0); i++)
