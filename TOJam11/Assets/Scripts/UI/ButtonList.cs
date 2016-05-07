@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-public class ButtonList : MonoBehaviour {
+public class ButtonList : CanvasFadeElement {
     RectTransform rt;
     public GameObject buttonPrefab;
     public RectTransform buttonParent;
@@ -32,22 +32,53 @@ public class ButtonList : MonoBehaviour {
     float scrollTarget = 0;
     public float scrollSmoothing = .1f;
 
-	// Use this for initialization
-	void Start () {
+    override protected void Start()
+    {
+        base.Start();
         rt = GetComponent<RectTransform>();
         scroll = GetComponent<ScrollRect>();
         buttons = new List<Button>();
 	}
 
+
     public void Clear()
     {
         if (buttons == null)
             return;
-        for (int i = buttons.Count - 1; i >=0; i--)
+        for (int i = buttons.Count - 1; i >= 0; i--)
         {
             Destroy(buttons[i].gameObject);
         }
         buttons = new List<Button>();
+    }
+
+    public override void Hide(Callback callback = null)
+    {
+        base.Hide(callback);
+
+        for (int i = buttons.Count - 1; i >= 0; i--)
+        {
+            buttons[i].onClick = null;
+        }
+    }
+
+    public void MoveToMouse()
+    {
+        Show();
+        Vector2 v = rt.pivot;
+        if (Input.mousePosition.x > Screen.width * .5f)
+            v.x = 1;
+        else
+            v.x = 0;
+        if (Input.mousePosition.y < Screen.height * .5f){
+            foreach (Button b in buttons)
+                b.transform.SetAsFirstSibling();
+            v.y = 0;
+        }
+        else
+            v.y = 1;
+        rt.pivot = v;
+        transform.position = Input.mousePosition;
     }
 
     public delegate void ButtonCallback() ;
@@ -58,10 +89,16 @@ public class ButtonList : MonoBehaviour {
         b.GetComponentInChildren<Text>().text = s;
         b.onClick.AddListener(() => { callback(); });
         buttons.Add(b);
+        Vector2 r = rt.sizeDelta;
+        r.y = buttonParent.sizeDelta.y;
+        rt.sizeDelta = r;
     }
 
     void Update()
     {
+        Vector2 r = rt.sizeDelta;
+        r.y = buttonParent.sizeDelta.y;
+        rt.sizeDelta = r;
         if (Input.GetKeyDown(KeyCode.DownArrow))
             selected++;
         else if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -77,7 +114,8 @@ public class ButtonList : MonoBehaviour {
 	
     void OnSelect()
     {
-        Debug.Log(selected);
+        if (selected < 0)
+            return;
         ColorBlock block;
         if (current!=null)
         {

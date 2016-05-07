@@ -181,6 +181,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7217a1802fe0b74f871035f9e74463a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeOutTime: 0.5
+  fadeOutDelay: 0.5
+  fadeInTime: 0.3
+  maxAlpha: 1
+  startFaded: 1
   nameText: {fileID: 11475998}
   hpText: {fileID: 11490214}
   apText: {fileID: 11493432}

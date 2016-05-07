@@ -60,10 +60,11 @@ public class BattleManager : MonoBehaviour {
                 {
                     grid.clickTimeout = .1f;
                     c.AP -= a.ap;
-                    list.Clear();
+                    list.Hide();
                     a.Perform(FinishedAction);
                 });
         }
+        list.MoveToMouse();
     }
 
     public void FinishedAction(){
