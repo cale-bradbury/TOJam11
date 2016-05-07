@@ -6,43 +6,26 @@ public class Grid : MonoBehaviour {
 
     public Vector2 gridSize;
     public float unitSize = 1;
-    public GameObject[,] grid;
+    public Car[,] grid;
 
     public GameObject gridTilePrefab;
     GridTile[,] gridTiles;
     List<GridTile> selection;
     public delegate void GridClick(GridTile tile);
     GridClick selectionCallback;
-
+    [HideInInspector]
+    public float clickTimeout;
 
 	// Use this for initialization
-    void Start()
+    void Awake()
     {
-        grid = ArrayUtils.Create2D<GameObject>((GameObject)null, Mathf.FloorToInt(gridSize.x), Mathf.FloorToInt(gridSize.y));
+        grid = ArrayUtils.Create2D<Car>((Car)null, Mathf.FloorToInt(gridSize.x), Mathf.FloorToInt(gridSize.y));
         gridTiles = ArrayUtils.Create2D<GridTile>(AddTile, Mathf.FloorToInt(gridSize.x), Mathf.FloorToInt(gridSize.y));
-        UpdateGridObjectPositions();
-	}
+   	}
 
-    public void AddCar(GameObject g, int x, int y)
+    public GridTile GetTile(int x, int y)
     {
-        g = Instantiate<GameObject>(g);
-        grid[x, y] = g;
-        UpdateGridObjectPositions();
-    }
-
-    void UpdateGridObjectPositions()
-    {
-        for (int i = 0; i < grid.GetLength(0); i++)
-        {
-            for (int j = 0; j < grid.GetLength(1); j++)
-            {
-                if (grid[i, j] != null)
-                {
-                    grid[i, j].transform.parent = gridTiles[i, j].transform;
-                    grid[i, j].transform.localPosition = Vector3.zero;
-                }
-            }
-        }
+        return gridTiles[x, y];
     }
 
     GridTile AddTile(int x, int y)
@@ -57,9 +40,17 @@ public class Grid : MonoBehaviour {
         return t;
     }
 
+    void Update()
+    {
+        if (clickTimeout > 0)
+            clickTimeout -= Time.deltaTime;
+    }
+
     public void Click(GridTile tile)
     {
-        if (selection != null)
+        if (clickTimeout > 0)
+            return;
+        if (selection != null && selection.IndexOf(tile)!=-1)
         {
             selection = null;
             selectionCallback(tile);
@@ -70,7 +61,22 @@ public class Grid : MonoBehaviour {
     public void ShowSelection(List<GridTile> tiles, GridClick callback)
     {
         selection = tiles;
+        foreach (GridTile g in selection)
+        {
+            g.color = Color.green;
+        }
         selectionCallback = callback;
+    }
+
+    public void HideSelection()
+    {
+        for (int i = 0; i < gridTiles.GetLength(0); i++)
+        {
+            for (int j = 0; j < gridTiles.GetLength(1); j++)
+            {
+                gridTiles[i, j].color = Color.white;
+            }
+        }
     }
 
     public List<GridTile> GetSuroundingDiamond(GridTile tile, int dist)
@@ -113,6 +119,28 @@ public class Grid : MonoBehaviour {
             }
         }
         return tiles;
+    }
+
+    public GridTile GetRandom()
+    {
+        return gridTiles[Mathf.FloorToInt(Random.value*gridTiles.GetLength(0)), Mathf.FloorToInt(Random.value*gridTiles.GetLength(1))];
+    }
+
+    public void RemoveCarTiles(List<GridTile> g)
+    {
+        for (int i = g.Count - 1; i >= 0; i--)
+        {
+            if (g[i].car != null)
+                g.RemoveAt(i);
+        }
+    }
+    public void RemoveEmptyTiles(List<GridTile> g)
+    {
+        for (int i = g.Count - 1; i >= 0; i--)
+        {
+            if (g[i].car == null)
+                g.RemoveAt(i);
+        }
     }
 	
 }
