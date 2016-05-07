@@ -4,6 +4,7 @@ using UnityEditor;
 
 public class LocationsConnector : EditorWindow
 {
+    public GameObject connectionParent;
     public GameObject connectionPrefab;
     [MenuItem ("Car/LocationConnectorWindow")]
     static void Init()
@@ -19,7 +20,7 @@ public class LocationsConnector : EditorWindow
 
     void OnGUI()
     {
-
+        connectionParent = (GameObject) EditorGUILayout.ObjectField("Connection Parent", connectionParent, typeof(GameObject));
         connectionPrefab = (GameObject) EditorGUILayout.ObjectField("Connection Prefab", connectionPrefab, typeof(GameObject));
 
         GameObject[] selected = Selection.gameObjects;
@@ -68,6 +69,7 @@ public class LocationsConnector : EditorWindow
             if (GUILayout.Button("Create Link"))
             {
                 GameObject g = Instantiate<GameObject>(connectionPrefab);
+                g.transform.parent = connectionParent.transform;
                 connection = g.GetComponent<LocationConnection>();
                 connection.nodeA = n1;
                 connection.nodeB = n2;

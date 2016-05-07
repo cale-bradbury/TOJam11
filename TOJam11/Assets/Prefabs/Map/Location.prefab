@@ -87,8 +87,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3b562aaf56f3849a711c28eae46ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConnectedLocations: []
-  connectionPrefab: {fileID: 101676, guid: b9faf5b4f46fcf64e93c3ca263a83e42, type: 2}
   Connections: []
 --- !u!1001 &100100000
 Prefab:
