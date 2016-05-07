@@ -8,9 +8,18 @@ public class LocationNode : MonoBehaviour {
     [HideInInspector]
     public  List<LocationConnection> Connections = new List<LocationConnection>();
     public PlayerNode playerNode = null;
+    private Renderer rend = null;
+    private Color activeColor = Color.green;
+    private Color hoverColor = Color.cyan;
+    private Color selectableColor = Color.white;
+    private Color defaultColor = Color.grey;
     private bool isSelectable = false;       // Set to true if the player can move to this location.
     private bool isActive = false;           // Set to true if the player is at this location.
     private bool isScaledUp = false;
+
+    void Start() {
+        rend = GetComponent<Renderer>();
+    }
 
     void OnMouseOver()
     {       
@@ -23,7 +32,6 @@ public class LocationNode : MonoBehaviour {
 
     void OnMouseExit()
     {
-        HandleClick();
         HandleHoverExit();
     }
 
@@ -31,29 +39,36 @@ public class LocationNode : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && playerNode != null)
         {
             playerNode.SetTargetLocation(this);
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            isScaledUp = false;
+            SetColor(activeColor);
         }
     }
 
     void HandleHoverOver()
     {
-        if (!isScaledUp)
+        if (!isScaledUp && isSelectable)
         {
             isScaledUp = true;
             transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            SetColor(hoverColor);
         }
     }
 
     void HandleHoverExit()
     {
+        Debug.Log(isScaledUp);
         if (isScaledUp)
         {
             isScaledUp = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
+            SetColor(selectableColor);
         }
     }
 
     public void Activate() {
         isActive = true;
+        SetColor(activeColor);
         for(var i = 0; i < Connections.Count; i++)
         {
             Connections[i].GetOther(this).SetSelectability(true);
@@ -68,6 +83,17 @@ public class LocationNode : MonoBehaviour {
     public void SetSelectability(bool val)
     {
         isSelectable = val;
-        // change appearance based on new value
+        if (val)
+        {
+            SetColor(Color.white);
+        } else
+        {
+            SetColor(defaultColor);
+        }
+    }
+
+    void SetColor(Color color)
+    {
+        rend.material.color = color;
     }
 }

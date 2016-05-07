@@ -31,11 +31,14 @@ public class MapController : MonoBehaviour {
         return null;
     }
 
-    public void ActiveLocation(LocationNode node) {
-        foreach(LocationNode n in nodes)
+    public void ActiveLocation(LocationNode node) {        
+        node.Activate();
+    }
+
+    public void ResetLocations() {
+        foreach (LocationNode n in nodes)
         {
             n.Reset();
         }
-        node.Activate();
     }
 }

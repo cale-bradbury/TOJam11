@@ -28,6 +28,7 @@ public class PlayerNode : MonoBehaviour {
 
     public void SetTargetLocation(LocationNode node)
     {
+        map.ResetLocations();
         targetLocation = node;
     }
 
