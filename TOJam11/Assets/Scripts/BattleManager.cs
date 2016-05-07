@@ -51,6 +51,12 @@ public class BattleManager : MonoBehaviour {
     public void DisplayMoves(Car c)
     {
         list.Clear();
+        list.Add("cancel", () =>
+        {
+            grid.clickTimeout = .1f;
+            list.Hide();
+            SelectCar();
+        });
         CarAction[] actions = c.GetComponentsInChildren<CarAction>();
         for (int i = 0; i < actions.Length; i++)
         {
@@ -60,10 +66,11 @@ public class BattleManager : MonoBehaviour {
                 {
                     grid.clickTimeout = .1f;
                     c.AP -= a.ap;
-                    list.Clear();
+                    list.Hide();
                     a.Perform(FinishedAction);
                 });
         }
+        list.MoveToMouse();
     }
 
     public void FinishedAction(){
