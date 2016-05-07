@@ -6,7 +6,6 @@ public class ButtonList : MonoBehaviour {
 
     public GameObject buttonPrefab;
     public RectTransform buttonParent;
-    public int count;
     List<Button> buttons;
     Button current;
     int _selected = 0;
@@ -32,15 +31,27 @@ public class ButtonList : MonoBehaviour {
 	void Start () {
         scroll = GetComponent<ScrollRect>();
         buttons = new List<Button>();
-        for (int i = 0; i < count; i++)
-        {
-            GameObject g = Instantiate<GameObject>(buttonPrefab);
-            g.transform.SetParent( buttonParent);
-            Button b = g.GetComponent<Button>();
-            b.onClick.AddListener(() => { OnClick(b); });
-            buttons.Add(b);
-        }
 	}
+
+    public void Clear()
+    {
+        for (int i = buttons.Count - 1; i >=0; i--)
+        {
+            Destroy(buttons[i].gameObject);
+        }
+        buttons = new List<Button>();
+    }
+
+    public delegate void ButtonClick() ;
+    public void Add(string s, ButtonClick callback){
+        int i = buttons.Count;
+        GameObject g = Instantiate<GameObject>(buttonPrefab);
+        g.transform.SetParent(buttonParent);
+        Button b = g.GetComponent<Button>();
+        b.GetComponentInChildren<Text>().text = s;
+        b.onClick.AddListener(() => { callback(); });
+        buttons.Add(b);
+    }
 
     void Update()
     {
@@ -57,11 +68,6 @@ public class ButtonList : MonoBehaviour {
         scroll.verticalNormalizedPosition = Mathf.Lerp(scroll.verticalNormalizedPosition, scrollTarget, scrollSmoothing);
     }
 	
-	// Update is called once per frame
-	void OnClick (Button b) {
-        selected = buttons.IndexOf(b);
-	}
-
     void OnSelect()
     {
         Debug.Log(selected);

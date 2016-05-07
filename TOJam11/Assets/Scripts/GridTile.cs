@@ -12,9 +12,16 @@ public class GridTile : MonoBehaviour {
     [HideInInspector]
     public int y;
 
+    public Car car
+    {
+        get { return grid.grid[x, y]; }
+        set { grid.grid[x, y] = value; }
+    }
+
     bool mouseDown = false;
     Material mat;
-    public Color targetColor = Color.white;
+    public Color color = Color.white;
+    Color targetColor = Color.white;
 
     void Start()
     {
@@ -24,12 +31,14 @@ public class GridTile : MonoBehaviour {
 
     void Update()
     {
+        targetColor = color;
         if (hovering)
         {
+            targetColor = Color.cyan;
             if (Input.GetMouseButtonDown(0))
             {
                 mouseDown = true;
-                targetColor = Color.cyan;
+                targetColor = Color.blue;
             }
             else if (mouseDown && Input.GetMouseButtonUp(0))
             {
@@ -41,13 +50,11 @@ public class GridTile : MonoBehaviour {
 
     void OnMouseEnter()
     {
-        targetColor = Color.red;
         hovering = true;
     }
 
     void OnMouseExit()
     {
-        targetColor = Color.white;
         hovering = false;
     }
 	

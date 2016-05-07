@@ -10,11 +10,20 @@ public class CarLoader : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         grid = FindObjectOfType<Grid>();
-        grid.AddCar(car,1,1);
+        GetTile();
 	}
+
+    void GetTile()
+    {
+        GridTile g = grid.GetRandom();
+        if (g.car != null)
+        {
+            GetTile();
+            return;
+        }
+
+        Car c = Instantiate<GameObject>(car).GetComponent<Car>();
+        BattleManager.AddCar(c, g.x,g.y);
+    }
 	
-	// Update is called once per frame
-	void NextTurn () {
-	    
-	}
 }
