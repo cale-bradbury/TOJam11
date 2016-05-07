@@ -17,6 +17,8 @@ public class Car : MonoBehaviour {
     }
 
     public bool isPlayer;
+    public float AP;
+    public float maxAP;
 
 
     void MoveTile(GridTile t)
@@ -33,4 +35,13 @@ public class Car : MonoBehaviour {
 
         transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, .1f); ;
 	}
+
+    public bool HasEnoughAP()
+    {
+        CarAction[] actions = GetComponentsInChildren<CarAction>();
+        foreach (CarAction c in actions)
+            if (c.ap <= AP)
+                return true;
+        return false;
+    }
 }

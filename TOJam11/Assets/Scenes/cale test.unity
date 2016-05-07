@@ -251,35 +251,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22409996, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22409996, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22409996, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 22409996, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 22499134, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22499134, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 22495728, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22495728, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 22406798, guid: 1c7843e3dcf4b5e428dfc39afdd62991, type: 2}
       propertyPath: m_AnchoredPosition.y
@@ -454,6 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
+  isPlayer: 1
 --- !u!114 &912183993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
+  isPlayer: 1
 --- !u!114 &912183994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
+  isPlayer: 0
 --- !u!114 &912183995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
+  isPlayer: 0
 --- !u!114 &1026397054 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11461234, guid: 1c7843e3dcf4b5e428dfc39afdd62991,
@@ -524,7 +528,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 912183991}
-  cars: []
+  enemyCars: []
+  playerCars: []
   list: {fileID: 1026397054}
 --- !u!4 &1278366387
 Transform:

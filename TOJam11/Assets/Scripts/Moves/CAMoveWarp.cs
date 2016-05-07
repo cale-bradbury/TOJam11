@@ -2,10 +2,15 @@
 using System.Collections;
 
 public class CAMoveWarp : CarAction {
-    
-    override public void Perform()
+
+    public override void Start()
     {
-        base.Perform();
+        base.Start();
+    }
+
+    override public void Perform(ActionCallback callback)
+    {
+        base.Perform(callback);
         GetTile();
     }
 
@@ -18,7 +23,7 @@ public class CAMoveWarp : CarAction {
             return;
         }
         car.tile = g;
-        BattleManager.Next();
+        finishedAction();
     }
 
 }

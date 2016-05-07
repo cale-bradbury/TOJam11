@@ -3,10 +3,16 @@ using System.Collections.Generic;
 
 public class CAMove : CarAction {
 
-    public int distance;    
+    public int distance;
 
-   override public void Perform(){
-       base.Perform();
+    public override void Start()
+    {
+        base.Start();
+    }
+
+    override public void Perform(ActionCallback callback)
+    {
+       base.Perform(callback);
        List<GridTile> g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
        car.tile.grid.RemoveCarTiles(g);
        car.tile.grid.ShowSelection(g, SelectCallback);
@@ -16,11 +22,11 @@ public class CAMove : CarAction {
    {
        if (selection.car != null)
        {
-           Perform();
+           Perform(finishedAction);
            return;
        }
        car.tile = selection;
-       BattleManager.Next();
+       finishedAction();
    }
 
 

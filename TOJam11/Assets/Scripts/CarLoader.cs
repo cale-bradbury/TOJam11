@@ -5,6 +5,7 @@ public class CarLoader : MonoBehaviour {
 
     public GameObject car;
     Grid grid;
+    public bool isPlayer = true;
 
 
 	// Use this for initialization
@@ -23,7 +24,7 @@ public class CarLoader : MonoBehaviour {
         }
 
         Car c = Instantiate<GameObject>(car).GetComponent<Car>();
-        BattleManager.AddCar(c, g.x,g.y);
+        BattleManager.AddCar(c, g.x,g.y, isPlayer);
     }
 	
 }

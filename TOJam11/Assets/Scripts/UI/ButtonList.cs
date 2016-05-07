@@ -20,6 +20,10 @@ public class ButtonList : MonoBehaviour {
             OnSelect();
         }
     }
+    public int Length
+    {
+        get { return buttons.Count; }
+    }
 
     public Color defaultColor = Color.white;
     public Color selectedColor = Color.red;
