@@ -57,7 +57,6 @@ public class LocationNode : MonoBehaviour {
 
     void HandleHoverExit()
     {
-        Debug.Log(isScaledUp);
         if (isScaledUp)
         {
             isScaledUp = false;
