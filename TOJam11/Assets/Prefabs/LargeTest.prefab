@@ -11,6 +11,7 @@ GameObject:
   - 193: {fileID: 19379792}
   - 33: {fileID: 3394606}
   - 23: {fileID: 2393390}
+  - 114: {fileID: 11441844}
   m_Layer: 0
   m_Name: LargeTest
   m_TagString: Untagged
@@ -63,6 +64,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122890}
   m_Mesh: {fileID: 4312892, guid: a82e4c2fe75af3040a5c87a7e503496d, type: 2}
+--- !u!114 &11441844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488927a2532cb56439337f63b68d6600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 0.75
 --- !u!193 &19379792
 Tree:
   m_ObjectHideFlags: 1
