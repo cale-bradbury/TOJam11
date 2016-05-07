@@ -61,11 +61,16 @@ public class Grid : MonoBehaviour {
     public void ShowSelection(List<GridTile> tiles, GridClick callback)
     {
         selection = tiles;
-        foreach (GridTile g in selection)
-        {
-            g.color = Color.green;
-        }
+        ColorSelection(tiles, Color.green);
         selectionCallback = callback;
+    }
+
+    public void ColorSelection(List<GridTile> tiles, Color c)
+    {
+        foreach (GridTile g in tiles)
+        {
+            g.color = c;
+        }
     }
 
     public void HideSelection()

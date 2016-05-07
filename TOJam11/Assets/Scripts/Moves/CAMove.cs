@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class CAMove : CarAction {
 
     public int distance;
+    List<GridTile> g;
 
     public override void Start()
     {
@@ -13,20 +14,29 @@ public class CAMove : CarAction {
     override public void Perform(ActionCallback callback)
     {
        base.Perform(callback);
-       List<GridTile> g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
+       g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
        car.tile.grid.RemoveCarTiles(g);
        car.tile.grid.ShowSelection(g, SelectCallback);
    }
 
+    public override void PerformAI(CarAction.ActionCallback callback)
+    {
+        base.PerformAI(callback);
+        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
+        car.tile.grid.RemoveCarTiles(g);
+        car.tile.grid.ColorSelection(g, Color.green);
+        Invoke("AISelect",.3f);
+    }
+
+    public void AISelect()
+    {
+        SelectCallback(g[Mathf.FloorToInt(Random.value * g.Count)]);
+    }
+
    void SelectCallback(GridTile selection)
    {
-       if (selection.car != null)
-       {
-           Perform(finishedAction);
-           return;
-       }
        car.tile = selection;
-       finishedAction();
+       Invoke("EndTurn", .3f);
    }
 
 

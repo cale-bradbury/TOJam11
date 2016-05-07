@@ -8,7 +8,7 @@ public class CarAction : MonoBehaviour {
     public string name;
     public delegate void ActionCallback();
     public ActionCallback finishedAction;
-    public float ap = 1;
+    public int ap = 1;
 
     virtual public void Start()
     {
@@ -24,5 +24,10 @@ public class CarAction : MonoBehaviour {
     virtual public void PerformAI(ActionCallback callback)
     {
         finishedAction = callback;
+    }
+
+    public void EndTurn()
+    {
+        finishedAction();
     }
 }
