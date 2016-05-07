@@ -20,18 +20,20 @@ public class LocationNode : MonoBehaviour {
     private bool isSelectable = false;       // Set to true if the player can move to this location.
     private bool isActive = false;           // Set to true if the player is at this location.
     private bool isScaledUp = false;
+    private bool showingTooltip = false;
 
     void Start() {
-        rend = GetComponent<Renderer>();
+        rend = GetComponent<Renderer>();        
     }
 
     void OnMouseOver()
-    {       
-        if(isSelectable && !map.isPaused)
+    {
+        if (!map.isPaused)
         {
             HandleClick();
             HandleHoverOver();
-        }        
+        }
+             
     }
 
     void OnMouseExit()
@@ -40,7 +42,7 @@ public class LocationNode : MonoBehaviour {
     }
 
     void HandleClick() {
-        if (Input.GetMouseButtonDown(0) && playerNode != null)
+        if (Input.GetMouseButtonDown(0) && playerNode != null && isSelectable)
         {
             playerNode.SetTargetLocation(this);
             transform.localScale = new Vector3(1f, 1f, 1f);
@@ -57,6 +59,11 @@ public class LocationNode : MonoBehaviour {
             transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
             SetColor(hoverColor);
         }
+
+        if (!showingTooltip)
+        {            
+            ShowTooltip();
+        }
     }
 
     void HandleHoverExit()
@@ -66,6 +73,11 @@ public class LocationNode : MonoBehaviour {
             isScaledUp = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
             SetColor(selectableColor);
+        }
+
+        if (showingTooltip)
+        {
+            HideTooltip();
         }
     }
 
@@ -108,5 +120,17 @@ public class LocationNode : MonoBehaviour {
             // need to handle changing between encounter and map.
             
         }
+    }
+
+    void ShowTooltip() {
+        showingTooltip = true;
+        map.SetTooltip(locationName, description);
+        map.EnableTooltip();
+    }
+
+    void HideTooltip()
+    {
+        showingTooltip = false;
+        map.DisableTooltip();
     }
 }

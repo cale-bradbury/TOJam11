@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class MapController : MonoBehaviour {
     public GameObject playerNodePrefab;
+    public GameObject locationTooltip;
+    private Text nameText; 
+    private Text descriptionText;
     [HideInInspector]
     public bool isPaused = false;
     [HideInInspector]
@@ -17,6 +21,9 @@ public class MapController : MonoBehaviour {
         foreach (LocationNode node in nodes) {
             node.map = this;
         }
+        nameText = locationTooltip.transform.Find("Name").GetComponent<Text>();
+        descriptionText = locationTooltip.transform.Find("Description").GetComponent<Text>();
+        DisableTooltip();
         SpawnPlayerNode();        
     }
 
@@ -52,5 +59,23 @@ public class MapController : MonoBehaviour {
 
     public void SetPause(bool val) {
         isPaused = val;
+    }
+
+    public void SetTooltip(string locationName, string description)
+    {
+        nameText.text = locationName;
+        descriptionText.text = description;
+    }
+
+    public void EnableTooltip()
+    {
+        locationTooltip.SetActive(true);
+        //locationTooltip.active = true;
+    }
+
+    public void DisableTooltip()
+    {
+        locationTooltip.SetActive(false);
+        //locationTooltip.active = false;
     }
 }
