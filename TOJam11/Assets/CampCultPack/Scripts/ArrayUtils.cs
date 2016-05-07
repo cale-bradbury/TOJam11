@@ -82,6 +82,35 @@ public class ArrayUtils
 	public static T getRandom<T>(T[] a){
 		return a [Mathf.FloorToInt (Random.value * a.Length)];
 	}
-	
+
+    public static int FindInArray(object[] arr, object match)
+    {
+        for (var i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == match)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    // Shallow comparison of two arrays.
+    public static bool AreEqual(object[] arr1, object[] arr2) {
+        bool areEqual = false;
+        if(arr1.Length == arr2.Length)
+        {
+            areEqual = true;
+            for(var i = 0; i < arr1.Length; i++)
+            {
+                if (arr1[i] != arr2[i])
+                {
+                    areEqual = false;
+                    break;
+                }
+            }
+        }
+        return areEqual;
+    }
 }
 

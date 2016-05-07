@@ -4,14 +4,15 @@ using UnityEditor;
 
 public class LocationNode : MonoBehaviour {
     //public Encounter encounter; whatever we decide events/battles/locations are, this can reference the one that is activated when a location is reached by the player.
-    public GameObject[] ConnectedLocations;
+    //public GameObject[] ConnectedLocations;
+    public List<GameObject> ConnectedLocations;
     public GameObject connectionPrefab;
     private GameObject[] Connections;
 
     void Awake()
     {
-        // set the length to equal length of ConnectedLocations
-        Connections = new GameObject[ConnectedLocations.Length];
+        //Connections = new GameObject[ConnectedLocations.Length];
+        Connections = new GameObject[ConnectedLocations.Count];
     }
 
     void Start () {
@@ -70,11 +71,30 @@ public class LocationNode : MonoBehaviour {
     }
 
     public int GetConnectedLocationIndex(GameObject location) {
-        return Utils.FindInArray(ConnectedLocations, location);
+        // return ArrayUtils.FindInArray(ConnectedLocations, location);
+        return ConnectedLocations.FindIndex(g => g == location);
     }
 
     public bool HasConnectionAt(int index)
     {
         return Connections[index] is GameObject;
+    }
+
+    public void SyncConnectedLocations() {
+        foreach (GameObject location in ConnectedLocations)
+        {
+            if (location is GameObject)
+            {
+                LocationNode node = location.GetComponent<LocationNode>();
+                //bool isConnected = ArrayUtils.FindInArray(node.ConnectedLocations, gameObject) > -1;
+                bool isConnected = node.ConnectedLocations.Exists(g => g == gameObject);
+                if (!isConnected)
+                {
+                    //ArrayUtility.Add<GameObject>(ref node.ConnectedLocations, gameObject);
+                    node.ConnectedLocations.Add(gameObject);
+                }
+            }
+            
+        }
     }
 }

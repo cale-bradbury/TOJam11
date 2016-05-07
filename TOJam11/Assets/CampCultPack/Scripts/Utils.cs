@@ -109,14 +109,21 @@ public class Utils {
 			onFinish ();
 	}
 
-
-    public static int FindInArray(object[] arr, object match){
-        for (var i = 0; i < arr.Length; i++) {
-            if(arr[i] == match)
+    public static bool CompareLists<T>(List<T> a, List<T> b) {
+        var areEqual = false;
+        if(a.Count == b.Count)
+        {
+            areEqual = true;
+            for (var i = 0; i < a.Count; i++)
             {
-                return i;
+                if (!b.Contains(a[i]))
+                {
+                    areEqual = false;
+                    break;
+                }
             }
         }
-        return -1;
+        return areEqual;
     }
+
 }
