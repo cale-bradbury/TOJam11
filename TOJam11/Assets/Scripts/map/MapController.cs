@@ -9,14 +9,19 @@ public class MapController : MonoBehaviour {
 
 	void Start () {
         nodes = FindObjectsOfType(typeof(LocationNode)) as LocationNode[];
-        SpawnPlayerNode();
+        SpawnPlayerNode();        
     }
 
     void SpawnPlayerNode() {
         GameObject g = Instantiate<GameObject>(playerNodePrefab);
         g.transform.parent = transform;
         playerNode = g.GetComponent<PlayerNode>();
-        playerNode.SetLocation(GetStartLocationNode());
+        playerNode.map = this;
+        playerNode.SetLocation(GetStartLocationNode());        
+        for (var i = 0; i < nodes.Length; i++)
+        {
+            nodes[i].playerNode = playerNode;
+        }
     }
 
     LocationNode GetStartLocationNode() {
@@ -24,5 +29,13 @@ public class MapController : MonoBehaviour {
             if (nodes[i].isStart) return nodes[i];
         }
         return null;
+    }
+
+    public void ActiveLocation(LocationNode node) {
+        foreach(LocationNode n in nodes)
+        {
+            n.Reset();
+        }
+        node.Activate();
     }
 }

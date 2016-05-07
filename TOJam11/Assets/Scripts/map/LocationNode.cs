@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor;
 
 public class LocationNode : MonoBehaviour {
     public string locationName;
@@ -8,12 +7,18 @@ public class LocationNode : MonoBehaviour {
     public bool isStart = false;
     [HideInInspector]
     public  List<LocationConnection> Connections = new List<LocationConnection>();
+    public PlayerNode playerNode = null;
+    private bool isSelectable = false;       // Set to true if the player can move to this location.
+    private bool isActive = false;           // Set to true if the player is at this location.
     private bool isScaledUp = false;
 
     void OnMouseOver()
-    {        
-        HandleClick();
-        HandleHoverOver();
+    {       
+        if(isSelectable)
+        {
+            HandleClick();
+            HandleHoverOver();
+        }        
     }
 
     void OnMouseExit()
@@ -23,9 +28,9 @@ public class LocationNode : MonoBehaviour {
     }
 
     void HandleClick() {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && playerNode != null)
         {
-            
+            playerNode.SetTargetLocation(this);
         }
     }
 
@@ -45,5 +50,28 @@ public class LocationNode : MonoBehaviour {
             isScaledUp = false;
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
+    }
+
+    public void Activate() {
+        isActive = true;
+        Debug.Log("Activate!");
+        Debug.Log(Connections.Count);
+        for(var i = 0; i < Connections.Count; i++)
+        {
+            Connections[i].GetOther(this).SetSelectability(true);
+            Debug.Log(Connections[i].GetOther(this).locationName);
+        }
+    }
+
+    public void Reset() {
+        isActive = false;
+        SetSelectability(false);
+    }
+
+    public void SetSelectability(bool val)
+    {
+        isSelectable = val;
+        Debug.Log(locationName + " selectability is " + val);
+        // change appearance based on new value
     }
 }
