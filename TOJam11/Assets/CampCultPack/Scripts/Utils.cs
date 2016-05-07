@@ -109,4 +109,14 @@ public class Utils {
 			onFinish ();
 	}
 
+
+    public static int FindInArray(object[] arr, object match){
+        for (var i = 0; i < arr.Length; i++) {
+            if(arr[i] == match)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
