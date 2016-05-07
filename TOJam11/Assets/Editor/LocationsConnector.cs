@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEditor;
 
-public class MapInspector : EditorWindow
+public class LocationsConnector : EditorWindow
 {
     public GameObject connectionPrefab;
-    [MenuItem ("Car/MapBuilder")]
+    [MenuItem ("Car/LocationConnectorWindow")]
     static void Init()
     {
-        MapInspector window = (MapInspector)EditorWindow.GetWindow<MapInspector>();
+        LocationsConnector window = (LocationsConnector)EditorWindow.GetWindow<LocationsConnector>();
         window.Show();
     }
 
