@@ -45,7 +45,7 @@ public class PropSpawner : MonoBehaviour
         {
             Renderer prop = props[i];
             Vector3 tempPos = prop.transform.localPosition;
-            float z = Time.deltaTime * scrollSpeed * 11.13f;
+            float z = Time.deltaTime * scrollSpeed * 10f;
             tempPos.z -= z;
             prop.transform.localPosition = tempPos;
 
