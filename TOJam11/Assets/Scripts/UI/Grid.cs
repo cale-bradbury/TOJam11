@@ -7,6 +7,7 @@ public class Grid : MonoBehaviour {
     public Vector2 gridSize;
     public float unitSize = 1;
     public Car[,] grid;
+    public ScreenShake shake;
 
     public GameObject gridTilePrefab;
     GridTile[,] gridTiles;
@@ -24,6 +25,14 @@ public class Grid : MonoBehaviour {
         grid = ArrayUtils.Create2D<Car>((Car)null, Mathf.FloorToInt(gridSize.x), Mathf.FloorToInt(gridSize.y));
         gridTiles = ArrayUtils.Create2D<GridTile>(AddTile, Mathf.FloorToInt(gridSize.x), Mathf.FloorToInt(gridSize.y));
    	}
+
+    void Start()
+    {
+        if (shake == null)
+        {
+            shake = FindObjectOfType<ScreenShake>();
+        }
+    }
 
     public GridTile GetTile(int x, int y)
     {
