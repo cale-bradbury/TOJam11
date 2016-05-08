@@ -50,6 +50,8 @@ public class Chassis : VehicleCreationState
         {
             var builderButton = Instantiate( Resources.Load<GameObject>( "Menus/Vehicle Creation/BuilderButton" ) );
             builderButton.transform.SetParent( chassisContent.transform );
+            builderButton.transform.localScale = Vector3.one;
+
             builderButton.GetComponent<PrefabDisplay>().prefab = chassis;
 
             builderButton.GetComponent<Button>().onClick.AddListener( () =>
