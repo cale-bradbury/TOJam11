@@ -6,12 +6,14 @@ public class CarLoader : MonoBehaviour {
     public GameObject car;
     Grid grid;
     public bool isPlayer = true;
+    public int count = 1;
 
 
 	// Use this for initialization
 	void Start () {
         grid = FindObjectOfType<Grid>();
-        GetTile();
+        for (int i = 0; i < count; i++ )
+            GetTile();
 	}
 
     void GetTile()
