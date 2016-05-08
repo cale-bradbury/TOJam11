@@ -95,7 +95,6 @@ public class Car : Socket {
 
     void BeginTurn(Car c)
     {
-        Debug.Log(maxAP.GetValue());
         AP += turnAP.GetValue();
         AP = Mathf.Min(AP, maxAP.GetValue());
         waiting = false;
