@@ -36,13 +36,13 @@ public class BattleManager : MonoBehaviour {
     public GameObject selectedIcon;
 
 	void Awake () {
-        if (instance != null)
-        {
-            Destroy(this);
-            return;
-        }
         instance = this;
 	}
+
+    void OnDestroy()
+    {
+        instance = null;
+    }
 
     void Start()
     {
