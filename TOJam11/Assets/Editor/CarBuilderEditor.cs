@@ -2,15 +2,25 @@
 using UnityEditor;
 using System.Collections.Generic;
 
-[CustomEditor(typeof(CarBuilder))]
-public class CarBuilderEditor : Editor {
+public class CarBuilderWindow : EditorWindow {
 
     CarBuilder builder;
     bool needsRepaint = false;
-    
-    public override void OnInspectorGUI()
+    bool refreshModule = false;
+
+    [MenuItem("Car/Builder")]
+    static void Init()
     {
-        builder = target as CarBuilder;
+        CarBuilderWindow c = EditorWindow.GetWindow<CarBuilderWindow>();
+        c.builder = FindObjectOfType<CarBuilder>();
+        c.builder.inventory = FindObjectOfType<Inventory>();
+    }
+
+    void OnGUI()
+    {
+        builder = (CarBuilder)EditorGUILayout.ObjectField("Builder", builder, typeof(CarBuilder), true);
+        if (builder == null)
+            return;
         builder.inventory = (Inventory)EditorGUILayout.ObjectField("Inventory", builder.inventory, typeof(Inventory), true);
         EditorGUILayout.BeginHorizontal();
         builder.car = (Car)EditorGUILayout.ObjectField("Car", builder.car, typeof(Car), true);
@@ -19,14 +29,28 @@ public class CarBuilderEditor : Editor {
             GameObject g = new GameObject("new car");
             g.name = "car";
             builder.car = g.AddComponent<Car>();
+            builder.car.name = g.name;
+            builder.SetSocket(builder.car);
         }
         EditorGUILayout.EndHorizontal();
+
         if (builder.car == null)
             return;
-
         builder.car.name = builder.car.gameObject.name = EditorGUILayout.TextField("car name", builder.car.name);
 
         //starting to do socket stuff here
+
+        //refresh constant create/destroy mode
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("Refresh Module") || refreshModule)
+        {
+            builder.SetSocket(builder.activeSocket);
+            builder.SelectModule(builder.cycleIndex);
+        }
+        refreshModule = EditorGUILayout.Toggle("Constant Refresh", refreshModule);
+        needsRepaint = refreshModule;
+        EditorGUILayout.EndHorizontal();
+
 
         //set to car if no active socket
         if (builder.activeSocket == null)
