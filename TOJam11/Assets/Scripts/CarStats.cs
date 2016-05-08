@@ -8,14 +8,14 @@ public class CarStats : MonoBehaviour
     public Text nameText;
     public Text hpText;
     public Text apText;
-    Scrollbar hpBar;
-    Scrollbar apBar;
+    ProgressBar hpBar;
+    ProgressBar apBar;
     Car selected;
 
     void Start()
     {
-        hpBar = hpText.GetComponentInChildren<Scrollbar>();
-        apBar = apText.GetComponentInChildren<Scrollbar>();
+        hpBar = hpText.GetComponentInChildren<ProgressBar>();
+        apBar = apText.GetComponentInChildren<ProgressBar>();
     }
 
     public void SetSelected(Car car)
@@ -32,8 +32,12 @@ public class CarStats : MonoBehaviour
             float hp = car.health.GetValue();
             hpText.text = "HP : " + hp;
             apText.text = "AP : " + car.AP;
-            hpBar.size = hp / car.maxHealth.GetValue();
-            apBar.size = car.AP / car.maxAP.GetValue();
+            hpBar.max = car.maxHealth.GetValue();
+            hpBar.progress = hp;
+            apBar.max = car.maxAP.GetValue();
+            apBar.progress = car.AP;
+            hpBar.Redraw();
+            apBar.Redraw();
         }
         else if(selected!=null)
         {

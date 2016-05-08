@@ -46,8 +46,8 @@ public class Car : MonoBehaviour {
     {
         health = new LensedValue<float>(0);
         maxHealth = new LensedValue<float>(0);
-        health.AddLens(new Lens<float>(int.MinValue, (x) => maxHealth.GetValue()));
-        health.AddLens(new Lens<float>(int.MaxValue, (x) => Mathf.Max(x, maxHealth.GetValue())));
+        health.AddLens(new Lens<float>(int.MinValue, (x) => { return maxHealth.GetValue(); }));
+        health.AddLens(new Lens<float>(int.MaxValue, (x) => { return Mathf.Min(x, maxHealth.GetValue()); }));
         maxAP = new LensedValue<float>(0);
         turnAP = new LensedValue<float>(0);
         defence = new LensedValue<float>(0);
@@ -93,8 +93,9 @@ public class Car : MonoBehaviour {
 
     void BeginTurn(Car c)
     {
+        Debug.Log(maxAP.GetValue());
         AP += turnAP.GetValue();
-        AP = Mathf.Max(AP, maxAP.GetValue());
+        AP = Mathf.Min(AP, maxAP.GetValue());
         waiting = false;
     }
 

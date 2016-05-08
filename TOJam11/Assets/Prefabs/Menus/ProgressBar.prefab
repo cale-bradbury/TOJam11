@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a29b71d7f44cb14fba966d42fa21019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxProgress: 100
-  minProgress: 0
-  currentProgress: 0
+  max: 100
+  min: 0
+  progress: 0
   bar: {fileID: 199004}
 --- !u!222 &22208396
 CanvasRenderer:
@@ -123,15 +123,15 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 199004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22445160}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 0.01}
-  m_SizeDelta: {x: 0, y: 12.02}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 140.73, y: 10}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!224 &22445160
 RectTransform:
@@ -141,15 +141,15 @@ RectTransform:
   m_GameObject: {fileID: 160764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 22407524}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 20}
+  m_AnchoredPosition: {x: 25, y: 0}
+  m_SizeDelta: {x: 140, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
