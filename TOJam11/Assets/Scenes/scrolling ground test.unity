@@ -733,19 +733,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22445160, guid: 661f41e72b88ecd4983081fc37e62914, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -275.05
+      value: -312.7
       objectReference: {fileID: 0}
     - target: {fileID: 22445160, guid: 661f41e72b88ecd4983081fc37e62914, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -98.1
+      value: -101.8
       objectReference: {fileID: 0}
     - target: {fileID: 22445160, guid: 661f41e72b88ecd4983081fc37e62914, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 62.4
       objectReference: {fileID: 0}
     - target: {fileID: 22445160, guid: 661f41e72b88ecd4983081fc37e62914, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 20
+      value: 16.3
       objectReference: {fileID: 0}
     - target: {fileID: 22445160, guid: 661f41e72b88ecd4983081fc37e62914, type: 2}
       propertyPath: m_AnchorMin.x
@@ -777,7 +777,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11480034, guid: 661f41e72b88ecd4983081fc37e62914, type: 2}
       propertyPath: currentProgress
-      value: 89
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 661f41e72b88ecd4983081fc37e62914, type: 2}
