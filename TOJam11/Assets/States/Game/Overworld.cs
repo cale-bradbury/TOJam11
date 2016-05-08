@@ -25,7 +25,10 @@ public class Overworld : GameState
 
     public override void OnDestroy()
     {
-        Destroy(activeLevel.gameObject);
+        if(activeLevel != null)
+        {
+            Destroy(activeLevel.gameObject);
+        }
     }
 
     public void StartEncounter(LocationNode node, bool isRandomEncounter) {
