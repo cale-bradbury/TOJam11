@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class CAMove : CarAction {
+public class CAMove : CarAction
+{
 
     public int distance;
     List<GridTile> g;
@@ -13,20 +14,23 @@ public class CAMove : CarAction {
 
     override public void Perform(ActionCallback callback)
     {
-       base.Perform(callback);
-       canCancel = true;
-       g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
-       car.tile.grid.RemoveCarTiles(g);
-       car.tile.grid.ShowSelection(g, SelectCallback, Color.green);
-   }
+        base.Perform(callback);
+        canCancel = true;
+        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance+Mathf.RoundToInt(car.handling.GetValue()));
+        car.tile.grid.RemoveCarTiles(g);
+        car.tile.grid.ShowSelection(g, SelectCallback, Color.green);
+    }
 
-    public override void PerformAI(CarAction.ActionCallback callback)
+    public override bool PerformAI(CarAction.ActionCallback callback)
     {
         base.PerformAI(callback);
-        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
+        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance + Mathf.RoundToInt(car.handling.GetValue()));
         car.tile.grid.RemoveCarTiles(g);
+        if (g.Count == 0)
+            return false;
         car.tile.grid.ColorSelection(g, Color.green);
-        Invoke("AISelect",.3f);
+        Invoke("AISelect", Settings.aiSpeed);
+        return true;
     }
 
     public void AISelect()
@@ -34,12 +38,12 @@ public class CAMove : CarAction {
         SelectCallback(g[Mathf.FloorToInt(Random.value * g.Count)]);
     }
 
-   void SelectCallback(GridTile selection)
-   {
-       canCancel = false;
-       car.tile = selection;
-       Invoke("EndTurn", .3f);
-   }
+    void SelectCallback(GridTile selection)
+    {
+        canCancel = false;
+        car.tile = selection;
+        Invoke("EndTurn", Settings.turnDelay);
+    }
 
 
 }

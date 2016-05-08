@@ -15,10 +15,12 @@ public class Grid : MonoBehaviour {
     GridClick selectionCallback;
     [HideInInspector]
     public float clickTimeout;
+    Vector3 tileOffset;
 
 	// Use this for initialization
     void Awake()
     {
+        tileOffset = new Vector3(gridSize.x,0,gridSize.y)*unitSize*(-.5f);
         grid = ArrayUtils.Create2D<Car>((Car)null, Mathf.FloorToInt(gridSize.x), Mathf.FloorToInt(gridSize.y));
         gridTiles = ArrayUtils.Create2D<GridTile>(AddTile, Mathf.FloorToInt(gridSize.x), Mathf.FloorToInt(gridSize.y));
    	}
@@ -32,7 +34,7 @@ public class Grid : MonoBehaviour {
     {
         GameObject g = Instantiate<GameObject>(gridTilePrefab);
         g.transform.parent = transform;
-        g.transform.localPosition = new Vector3(x,0,y) * unitSize;
+        g.transform.localPosition = new Vector3(x,0,y) * unitSize+tileOffset;
         GridTile t = g.GetComponent<GridTile>();
         t.grid = this;
         t.x = x;
@@ -142,6 +144,14 @@ public class Grid : MonoBehaviour {
         for (int i = g.Count - 1; i >= 0; i--)
         {
             if (g[i].car != null)
+                g.RemoveAt(i);
+        }
+    }
+    public void RemoveSquadTiles(List<GridTile> g, bool isPlayer)
+    {
+        for (int i = g.Count - 1; i >= 0; i--)
+        {
+            if (g[i].car != null && g[i].car.isPlayer==isPlayer)
                 g.RemoveAt(i);
         }
     }

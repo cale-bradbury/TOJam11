@@ -12,6 +12,11 @@ public class CarAction : MonoBehaviour {
     [HideInInspector]
     public bool canCancel = false;
 
+    public Grid grid
+    {
+        get { return car.tile.grid; }
+    }
+
     virtual public void Start()
     {
         car = GetComponentInParent<Car>();
@@ -23,9 +28,11 @@ public class CarAction : MonoBehaviour {
         //to be overridden
     }
 
-    virtual public void PerformAI(ActionCallback callback)
+    //return false if it's fucking dumb for the ai to do this action
+    virtual public bool PerformAI(ActionCallback callback)
     {
         finishedAction = callback;
+        return true;
     }
 
     public void EndTurn()
