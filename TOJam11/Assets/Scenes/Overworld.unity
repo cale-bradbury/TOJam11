@@ -585,8 +585,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationName: First Stop
-  description: Approaching the destination.
-  isStart: 0
+  description: 
+  isStart: 1
   isEnd: 0
   hasEncounter: 1
   encounter: {fileID: 11462000, guid: f4981621546758c46bb17e1e36b0c0d5, type: 2}
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locationName: Detour
-  description: They won't expect this...
+  description: 
   isStart: 0
   isEnd: 0
   hasEncounter: 1
