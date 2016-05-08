@@ -15,13 +15,11 @@ public class EnvironmentController : MonoBehaviour {
 
     void Start()
     {
-
-
         bgScroller = background.GetComponent<BackgroundScroller>();
         bgScroller.scrollSpeed = scrollSpeed;
         propScroller = props.GetComponent<PropSpawner>();
         propScroller.scrollSpeed = scrollSpeed;
-        propScroller.smallPropSpawn = new float[2] { 0f, gridWidth / 2 };
+        propScroller.smallPropSpawn = new float[2] { 1.6f, gridWidth / 2 };
         propScroller.largePropSpawn = new float[2] { gridWidth / 4, gridWidth / 2};
     }
 }
