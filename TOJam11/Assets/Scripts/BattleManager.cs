@@ -11,6 +11,8 @@ public class BattleManager : MonoBehaviour {
     }
     public Turn turn = Turn.Enemy;
 
+    public Callback EndGame;
+
     public static BattleManager instance;
     public Grid grid;
     [HideInInspector]
@@ -74,6 +76,10 @@ public class BattleManager : MonoBehaviour {
         instance.enemyCars.Remove(c);
         instance.playerCars.Remove(c);
         Destroy(c.gameObject);
+        if (instance.enemyCars.Count == 0 || instance.playerCars.Count == 0)
+        {
+            instance.EndGame();
+        }
     }
     
     public void DisplayMoves()
