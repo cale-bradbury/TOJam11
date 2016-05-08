@@ -104,7 +104,7 @@ public class Car : Socket {
     {
         defense.initialValue = damage;
         var d = defense.GetValue();
-        //Debug.Log("++"+health.GetValue());
+        Debug.Log("++"+health.GetValue());
         health.AddLens(new Lens<float>(0, x => x - d));
         Debug.Log("--"+health.GetValue());
         tile.grid.shake.Shake(.4f,.3f);
