@@ -92,8 +92,10 @@ public class MapController : MonoBehaviour {
         {
             SetPause(true);
             EndActiveEncounter();
-            childContainer.SetActive(false);
+            
             // TODO: disable camera?
+
+            childContainer.SetActive(false);
             activeEncounterIsFinal = node.isEnd;
             activeEncounter = Instantiate<GameObject>(node.encounterPrefab);
             activeEncounter.transform.position = Vector3.zero;
