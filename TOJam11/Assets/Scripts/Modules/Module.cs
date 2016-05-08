@@ -5,7 +5,7 @@ public class Module : MonoBehaviour
 {
     public enum Types
     {
-        Vehicle,
+        Body,
 
         Chassis,
         Engine,
