@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c772dbc4cd860ff4bbb4c8eddd9616b5
-timeCreated: 1462688887
+guid: 7776652cd6319d14a842e5f8ca8bce5a
+timeCreated: 1462728915
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,8 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box001
+    4300000: Pyramid001
+    4300002: Select_Arrow
   materials:
     importMaterials: 1
     materialName: 0
