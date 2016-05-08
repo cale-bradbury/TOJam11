@@ -86,6 +86,6 @@ public class MapController : MonoBehaviour {
      */
     public void StartEncounter(LocationNode node, bool isRandomEncounter)
     {
-        overworld.StartEncounter(node, isRandomEncounter);
+        //overworld.StartEncounter(node, isRandomEncounter);
     }
 }
