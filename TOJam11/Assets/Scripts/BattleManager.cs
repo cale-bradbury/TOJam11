@@ -138,6 +138,7 @@ public class BattleManager : MonoBehaviour {
                 }
                 else
                 {
+                    grid.HideSelection();
                     actions.RemoveAt(i);
                 }
             }
