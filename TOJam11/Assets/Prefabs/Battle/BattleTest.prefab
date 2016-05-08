@@ -653,8 +653,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 475938}
   m_RootOrder: 0
@@ -834,7 +834,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 40811b7d02113fb4786182b0a02a2491, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -889,7 +889,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134660}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300002, guid: 7776652cd6319d14a842e5f8ca8bce5a, type: 3}
 --- !u!64 &6403910
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   lastFrame: {fileID: 0}
   flow:
     texture: {fileID: 2800000, guid: e08c295755c0885479ad19f518286ff2, type: 3}
-    scaleTranslate: {x: 1, y: 1, z: 202.04713, w: -83.44655}
+    scaleTranslate: {x: 1, y: 1, z: 206.34392, w: -89.58662}
     scaleTranslatePerSecond: {x: 0, y: 0, z: 0.7, w: -1}
   offset: {x: 0.01, y: 0.01}
   fade: 0.9
@@ -1659,7 +1659,7 @@ MonoBehaviour:
   enemyCars: []
   playerCars: []
   list: {fileID: 11447106}
-  autoPlay: 1
+  autoPlay: 0
   selectedIcon: {fileID: 179874}
 --- !u!114 &11462242
 MonoBehaviour:
@@ -2123,7 +2123,7 @@ SphereCollider:
   m_GameObject: {fileID: 134660}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
