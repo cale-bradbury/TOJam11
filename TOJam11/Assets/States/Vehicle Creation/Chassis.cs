@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
 
 public class Chassis : VehicleCreationState
 {
@@ -38,11 +39,25 @@ public class Chassis : VehicleCreationState
                 for( int i = 0; i < item.count; i++ )
                 {
                     var chassis = Instantiate<GameObject>( item.prefab );
-                    chassis.transform.SetParent( chassisMenu.transform );
+                    chassis.transform.SetParent( invetory.transform );
                     chassisList.Add( chassis );
                 }
             }
         }
+
+        var chassisContent = FindObjectOfType<ChassisContent>();
+        foreach( var chassis in chassisList )
+        {
+            var builderButton = Instantiate( Resources.Load<GameObject>( "Menus/Vehicle Creation/BuilderButton" ) );
+            builderButton.transform.SetParent( chassisContent.transform );
+            builderButton.GetComponent<PrefabDisplay>().prefab = chassis;
+
+            builderButton.GetComponent<Button>().onClick.AddListener( () =>
+            {
+                vcsm.SwitchState<Engine>();
+            } );
+        }
+         
     }
 
     public override void Update(){ }

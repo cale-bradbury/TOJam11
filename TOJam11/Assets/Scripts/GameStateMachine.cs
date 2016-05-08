@@ -6,6 +6,6 @@ public class GameStateMachine : StateMachine<GameState>
 {
     public override void Awake()
     {
-        SwitchState<TitleScreen>();
+        SwitchState<Chassis>();
     }
 }
