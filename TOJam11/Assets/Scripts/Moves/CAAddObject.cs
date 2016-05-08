@@ -15,7 +15,6 @@ public class CAAddObject : CarAction
         canCancel = true;
         base.Perform(callback);
         g = grid.GetSuroundingDiamond(car.tile, range);
-        grid.RemoveEmptyTiles(g);
         if (!canAddToEnemy)
             grid.RemoveSquadTiles(g, !car.isPlayer);
         if (!canAddToTeam)
