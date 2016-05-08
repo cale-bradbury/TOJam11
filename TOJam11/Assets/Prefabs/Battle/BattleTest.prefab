@@ -96,9 +96,7 @@ GameObject:
   - 4: {fileID: 461338}
   - 114: {fileID: 11462000}
   - 114: {fileID: 11472352}
-  - 114: {fileID: 11415208}
   - 114: {fileID: 11453836}
-  - 114: {fileID: 11445668}
   m_Layer: 0
   m_Name: BattleTest
   m_TagString: Untagged
@@ -1118,20 +1116,6 @@ MonoBehaviour:
   background: {fileID: 141628}
   scrollSpeed: 1.5
   gridWidth: 20
---- !u!114 &11415208
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c273006c8af97764c925adb4202f93a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  car: {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
-  isPlayer: 1
-  count: 4
 --- !u!114 &11418586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1424,20 +1408,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11445668
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 111904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c273006c8af97764c925adb4202f93a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  car: {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  isPlayer: 1
-  count: 4
 --- !u!114 &11447106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1799,7 +1769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   car: {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  isPlayer: 1
+  isPlayer: 0
   count: 4
 --- !u!114 &11479178
 MonoBehaviour:
