@@ -24,12 +24,6 @@ public abstract class VehicleCreationState : State
         menu = Instantiate( Resources.Load<GameObject>( resourcePath ) );
         menu.GetComponent<RectTransform>().SetParent( canvas.GetComponent<RectTransform>(), false );
 
-        if( vehicle != null )
-        {
-            Destroy( vehicle );
-        }
-        vehicle = new GameObject( "Vehicle" );
-
         invetory = GameObject.Find( "Inventory" ).GetComponent<Inventory>();
 
         foreach( var item in invetory.list )
@@ -39,9 +33,9 @@ public abstract class VehicleCreationState : State
             {
                 for( int i = 0; i < item.count; i++ )
                 {
-                    var chassis = Instantiate<GameObject>( item.prefab );
-                    chassis.transform.SetParent( invetory.transform );
-                    moduleList.Add( chassis );
+                    var prefab = Instantiate<GameObject>( item.prefab );
+                    prefab.transform.SetParent( invetory.transform );
+                    moduleList.Add( prefab );
                 }
             }
         }
@@ -57,14 +51,19 @@ public abstract class VehicleCreationState : State
 
             builderButton.GetComponent<Button>().onClick.AddListener( () =>
             {
-                vcsm.SwitchState<Engine>();
+                // Add Module to Vehicle
+                var prefab = builderButton.GetComponent<PrefabDisplay>().prefab;
+                var newModule = Instantiate( prefab );
+                newModule.name = prefab.name;
+                newModule.transform.SetParent( vehicle.transform );
+
+                gameObject.GetComponent<VehicleCreationStateMachine>().SwitchState<Engine>();
             } );
         }
     }
 
     public override void OnDestroy()
     {
-        Destroy( vehicle );
         Destroy( menu );
         canvas = null;
     }

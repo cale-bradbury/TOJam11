@@ -30,7 +30,7 @@ public class VehicleCreation : GameState
 
 
         vcsm = gameObject.AddComponent<VehicleCreationStateMachine>();
-        vcsm.SwitchState<Engine>();
+        vcsm.SwitchState<Chassis>();
     }
 
     public override void Update()

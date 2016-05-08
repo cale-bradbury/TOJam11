@@ -13,15 +13,21 @@ public class TitleScreen : GameState
         gsm = GetComponent<GameStateMachine>();
         canvas = GameObject.Find( "Canvas" );
         titleScreenMenu = Instantiate<GameObject>( Resources.Load<GameObject>( "Menus/Title Screen" ) );
-        titleScreenMenu.GetComponent<RectTransform>().SetParent( canvas.GetComponent<RectTransform>(), false);     
+        titleScreenMenu.GetComponent<RectTransform>().SetParent( canvas.GetComponent<RectTransform>(), false);
+
+        var invetory = GameObject.Find( "Inventory" );
+        invetory.transform.DestroyAllChildren();
+
+        var vehicle = GameObject.Find( "Vehicle" );
+        vehicle.transform.DestroyAllChildren();
     }
 
     public override void Update()
     {
         if( Input.anyKey )
         {
-            // gsm.SwitchState<VehicleCreation>();
-            gsm.SwitchState<Overworld>();
+            gsm.SwitchState<VehicleCreation>();
+            //gsm.SwitchState<Overworld>();
         }
     }
 

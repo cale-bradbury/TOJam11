@@ -9,7 +9,11 @@ public class Chassis : VehicleCreationState
     {
         resourcePath = "Menus/Vehicle Creation/Chassis";
         moduleType = Modules.Types.Chassis;
-        base.Awake();         
+
+        vehicle = GameObject.Find( "Vehicle" );
+        vehicle.transform.DestroyAllChildren();
+
+        base.Awake();
     }
 
     public override void Update(){ }    
