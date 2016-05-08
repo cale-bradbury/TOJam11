@@ -122,6 +122,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 400182}
   - 114: {fileID: 11452082}
+  - 114: {fileID: 11475420}
+  - 114: {fileID: 11447602}
+  - 114: {fileID: 11414664}
+  - 114: {fileID: 11437374}
+  - 114: {fileID: 11443736}
+  - 114: {fileID: 11457386}
   m_Layer: 0
   m_Name: TonkaTonka
   m_TagString: Untagged
@@ -330,7 +336,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159628}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -508,7 +514,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192170}
-  m_LocalRotation: {x: 0.026030898, y: 0, z: 0, w: 0.9996612}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0.099, z: 0.014}
   m_LocalScale: {x: 0.52818894, y: 0.41848782, z: 0.59923655}
   m_Children:
@@ -837,6 +843,18 @@ MonoBehaviour:
   - {fileID: 11460434}
   - {fileID: 11463934}
   parent: {fileID: 11452082}
+--- !u!114 &11414664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23fd2689f4b5194eb6367c96b400b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ap: 2
 --- !u!114 &11415306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -883,6 +901,51 @@ MonoBehaviour:
   type: 3
   child: {fileID: 11484328}
   parent: {fileID: 11411976}
+--- !u!114 &11437374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a829f812196394fa1c74601513706a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  name: move
+  ap: 1
+  canCancel: 0
+  distance: 3
+--- !u!114 &11443736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050dc54f75be4674e97895a681610848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  name: attack
+  ap: 1
+  canCancel: 0
+  distance: 4
+  damage: 1
+--- !u!114 &11447602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56fbbaec214db4b489acf4977684a91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ap: 5
 --- !u!114 &11452082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -902,6 +965,23 @@ MonoBehaviour:
   AP: 0
   actions: []
   waiting: 1
+--- !u!114 &11457386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050dc54f75be4674e97895a681610848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  name: deathpunch
+  ap: 1
+  canCancel: 0
+  distance: 2
+  damage: 2
 --- !u!114 &11460434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -962,6 +1042,18 @@ MonoBehaviour:
   count: 0
   sockets: []
   parent: {fileID: 11460434}
+--- !u!114 &11475420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a813dea297bc539448acaf0d73b80b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 4
 --- !u!114 &11483682
 MonoBehaviour:
   m_ObjectHideFlags: 1

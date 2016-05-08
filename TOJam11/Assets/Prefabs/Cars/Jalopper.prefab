@@ -159,6 +159,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 477186}
   - 114: {fileID: 11474610}
+  - 114: {fileID: 11455380}
+  - 114: {fileID: 11450676}
+  - 114: {fileID: 11481748}
+  - 114: {fileID: 11477908}
+  - 114: {fileID: 11468478}
+  - 114: {fileID: 11443278}
   m_Layer: 0
   m_Name: Jalopper
   m_TagString: Untagged
@@ -313,7 +319,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 120782}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -932,6 +938,59 @@ MonoBehaviour:
   count: 0
   sockets: []
   parent: {fileID: 11429120}
+--- !u!114 &11443278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050dc54f75be4674e97895a681610848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  name: deathpunch
+  ap: 1
+  canCancel: 0
+  distance: 3
+  damage: 2
+--- !u!114 &11450676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a813dea297bc539448acaf0d73b80b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3
+--- !u!114 &11455380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56fbbaec214db4b489acf4977684a91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ap: 4
+--- !u!114 &11468478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23fd2689f4b5194eb6367c96b400b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ap: 1
 --- !u!114 &11473630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -965,6 +1024,38 @@ MonoBehaviour:
   AP: 0
   actions: []
   waiting: 1
+--- !u!114 &11477908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050dc54f75be4674e97895a681610848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  name: snipe
+  ap: 1
+  canCancel: 0
+  distance: 8
+  damage: 1
+--- !u!114 &11481748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a19d3553eac344898220a63ac9c225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  name: teleport
+  ap: 1
+  canCancel: 0
 --- !u!114 &11492260
 MonoBehaviour:
   m_ObjectHideFlags: 1
