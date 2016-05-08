@@ -181,7 +181,12 @@ MonoBehaviour:
   - {fileID: 131798, guid: e65722f8050d984469e100f342ab4cf7, type: 2}
   - {fileID: 111702, guid: 309ef16d17f0e69448859f510f0fccb4, type: 2}
   largePropPrefabs:
-  - {fileID: 172768, guid: 50a63bc1933b26a4ba16243ef195cfd2, type: 2}
+  - {fileID: 177446, guid: a54b300fc0da46e47a20195719caf4bd, type: 2}
+  - {fileID: 104968, guid: 350921533f0f21e4381be15089bffece, type: 2}
+  - {fileID: 144038, guid: 8a1d257fb26f4ec4d86466334b933eef, type: 2}
+  - {fileID: 169750, guid: 954f04c7eaa560046a977463385fcb13, type: 2}
+  - {fileID: 193964, guid: dca5bdfe06074d841b555c006ad69a86, type: 2}
+  - {fileID: 104968, guid: eaf027e409da4ea4b85526ebb8671aef, type: 2}
   spawnRate: 0.5
   minSpawnChance: 0.1
   maxSpawnChance: 0.5
