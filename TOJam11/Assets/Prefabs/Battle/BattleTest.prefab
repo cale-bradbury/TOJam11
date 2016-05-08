@@ -113,6 +113,7 @@ GameObject:
   - 114: {fileID: 11462000}
   - 114: {fileID: 11472352}
   - 114: {fileID: 11453836}
+  - 114: {fileID: 11482262}
   m_Layer: 0
   m_Name: BattleTest
   m_TagString: Untagged
@@ -771,7 +772,7 @@ Transform:
   m_GameObject: {fileID: 121420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 3.13}
+  m_LocalScale: {x: 1.5, y: 2, z: 1.8}
   m_Children:
   - {fileID: 438674}
   - {fileID: 401730}
@@ -809,7 +810,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1199,7 +1200,7 @@ MonoBehaviour:
   lastFrame: {fileID: 0}
   flow:
     texture: {fileID: 2800000, guid: e08c295755c0885479ad19f518286ff2, type: 3}
-    scaleTranslate: {x: 1, y: 1, z: 154.34904, w: -15.304938}
+    scaleTranslate: {x: 1, y: 1, z: 202.04713, w: -83.44655}
     scaleTranslatePerSecond: {x: 0, y: 0, z: 0.7, w: -1}
   offset: {x: 0.01, y: 0.01}
   fade: 0.9
@@ -1234,7 +1235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b864e0514afca4240a8e5f00df679ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 10, y: 10}
+  gridSize: {x: 7, y: 7}
   unitSize: 1
   shake: {fileID: 0}
   gridTilePrefab: {fileID: 138474, guid: dffa4e8da76f37f4094b48cd2aac553b, type: 2}
@@ -1552,16 +1553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars:
-  - {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  - {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  - {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  - {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  - {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  - {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  - {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  - {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  - {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
-  - {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
+  - {fileID: 179028, guid: 56eccfdee0b98c945bd1b0329f679198, type: 2}
+  - {fileID: 179028, guid: 56eccfdee0b98c945bd1b0329f679198, type: 2}
   isPlayer: 1
 --- !u!114 &11457604
 MonoBehaviour:
@@ -1784,10 +1777,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars:
-  - {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
-  - {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
-  - {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
-  - {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
+  - {fileID: 146794, guid: 91a45190203577a4c8c392b26cf72e9d, type: 2}
+  - {fileID: 146794, guid: 91a45190203577a4c8c392b26cf72e9d, type: 2}
+  - {fileID: 146794, guid: 91a45190203577a4c8c392b26cf72e9d, type: 2}
+  - {fileID: 146794, guid: 91a45190203577a4c8c392b26cf72e9d, type: 2}
   isPlayer: 0
 --- !u!114 &11479178
 MonoBehaviour:
@@ -1822,6 +1815,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'AP : '
+--- !u!114 &11482262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 111904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c273006c8af97764c925adb4202f93a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cars:
+  - {fileID: 155396, guid: beac63c8cfd5a264eaf213594e63045e, type: 2}
+  isPlayer: 1
 --- !u!114 &11482688
 MonoBehaviour:
   m_ObjectHideFlags: 1

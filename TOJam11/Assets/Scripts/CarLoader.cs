@@ -25,7 +25,8 @@ public class CarLoader : MonoBehaviour {
         }
 
         Car c = Instantiate<GameObject>(prefab).GetComponent<Car>();
-        BattleManager.AddCar(c, g.x,g.y, isPlayer);
+        c.isPlayer = isPlayer;
+        BattleManager.AddCar(c, g.x,g.y);
     }
 	
 }

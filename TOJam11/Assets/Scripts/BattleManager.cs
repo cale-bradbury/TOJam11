@@ -62,10 +62,10 @@ public class BattleManager : MonoBehaviour {
         }
     }
 	
-    public static void AddCar(Car c, int x, int y, bool isPlayer = true)
+    public static void AddCar(Car c, int x, int y)
     {
         c.tile = instance.grid.GetTile(x,y);
-        if(isPlayer)
+        if(c.isPlayer)
             instance.playerCars.Add(c);
         else
             instance.enemyCars.Add(c);

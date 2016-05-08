@@ -568,6 +568,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 410958}
   - 114: {fileID: 11481012}
+  - 114: {fileID: 11466594}
+  - 114: {fileID: 11445152}
+  - 114: {fileID: 11425344}
+  - 114: {fileID: 11489824}
+  - 114: {fileID: 11437318}
+  - 114: {fileID: 11460184}
   m_Layer: 0
   m_Name: HotRud
   m_TagString: Untagged
@@ -936,7 +942,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138490}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2052,6 +2058,18 @@ MonoBehaviour:
   - {fileID: 11486076}
   - {fileID: 11499624}
   parent: {fileID: 11481012}
+--- !u!114 &11425344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56fbbaec214db4b489acf4977684a91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ap: 4
 --- !u!114 &11425596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2070,6 +2088,23 @@ MonoBehaviour:
   count: 0
   sockets: []
   parent: {fileID: 11496938}
+--- !u!114 &11437318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050dc54f75be4674e97895a681610848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  name: attack
+  ap: 1
+  canCancel: 0
+  distance: 4
+  damage: 1
 --- !u!114 &11437418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2088,6 +2123,18 @@ MonoBehaviour:
   count: 0
   sockets: []
   parent: {fileID: 11483850}
+--- !u!114 &11445152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23fd2689f4b5194eb6367c96b400b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ap: 2
 --- !u!114 &11459002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2106,6 +2153,38 @@ MonoBehaviour:
   count: 0
   sockets: []
   parent: {fileID: 11494572}
+--- !u!114 &11460184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f1e7499b3f9a14abde0e498b5b112f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  name: stun
+  ap: 1
+  canCancel: 0
+  prefab: {fileID: 119740, guid: 23fb3770013ca0a4a8ef1f57499c3b92, type: 2}
+  canAddToTeam: 0
+  canAddToEnemy: 1
+  range: 3
+  selectColor: {r: 0, g: 0, b: 1, a: 1}
+--- !u!114 &11466594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a813dea297bc539448acaf0d73b80b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 4
 --- !u!114 &11473650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2242,6 +2321,22 @@ MonoBehaviour:
   count: 0
   sockets: []
   parent: {fileID: 11499624}
+--- !u!114 &11489824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a829f812196394fa1c74601513706a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  name: move
+  ap: 1
+  canCancel: 0
+  distance: 4
 --- !u!114 &11494572
 MonoBehaviour:
   m_ObjectHideFlags: 1
