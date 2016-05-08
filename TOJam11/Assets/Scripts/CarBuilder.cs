@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 public class CarBuilder : MonoBehaviour {
 
@@ -23,6 +24,17 @@ public class CarBuilder : MonoBehaviour {
     {
         activeSocket = socket;
         cycleModules = inventory.GetModulesOfType(activeSocket.type);
+        if (socket.child)
+        {
+            cycleIndex = 0;
+            for(int i = 0; i<cycleModules.Length;i++){
+                if (socket.child.name == cycleModules[i].name)
+                {
+                    cycleIndex = i;
+                    return;
+                }
+            }
+        }
     }
 
     public void SelectSocket(int i)
@@ -36,7 +48,7 @@ public class CarBuilder : MonoBehaviour {
     {
         SelectSocket(socketIndex + 1);
     }
-
+    
     public void SelectModule(int i)
     {
         cycleIndex = i;
