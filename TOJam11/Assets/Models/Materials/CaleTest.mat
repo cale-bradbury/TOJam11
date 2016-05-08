@@ -102,7 +102,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 1
+        second: 0
       data:
         first:
           name: _ZWrite
@@ -139,11 +139,11 @@ Material:
       data:
         first:
           name: _Red1
-        second: {r: 0.6965518, g: 0, b: 1, a: 1}
+        second: {r: 0.3455882, g: 0.20574063, b: 0.055903967, a: 1}
       data:
         first:
           name: _Red2
-        second: {r: 0.40689635, g: 1, b: 0, a: 1}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _Green1
