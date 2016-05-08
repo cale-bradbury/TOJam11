@@ -47,7 +47,7 @@ public class Car : Socket {
     {
         health = new LensedValue<float>(0);
         maxHealth = new LensedValue<float>(0);
-        health.AddLens(new Lens<float>(int.MinValue, (x) => { return maxHealth.GetValue(); }));
+        health.AddLens(new Lens<float>(0, (x) => { return maxHealth.GetValue(); }));
         health.AddLens(new Lens<float>(int.MaxValue, (x) => { return Mathf.Min(x, maxHealth.GetValue()); }));
         maxAP = new LensedValue<float>(0);
         turnAP = new LensedValue<float>(0);
@@ -104,9 +104,9 @@ public class Car : Socket {
     {
         defense.initialValue = damage;
         var d = defense.GetValue();
-        Debug.Log("++"+health.GetValue());
-        health.AddLens(new Lens<float>(0, x => x - d));
-        Debug.Log("--"+health.GetValue());
+        //Debug.Log("++"+health.GetValue());
+        health.AddLens(new Lens<float>(1, x => x - d));
+        //Debug.Log("--"+health.GetValue());
         tile.grid.shake.Shake(.4f,.3f);
         CheckHealth();
     }
