@@ -12,6 +12,11 @@ public class CarAction : MonoBehaviour {
     [HideInInspector]
     public bool canCancel = false;
 
+    public Grid grid
+    {
+        get { return car.tile.grid; }
+    }
+
     virtual public void Start()
     {
         car = GetComponentInParent<Car>();
