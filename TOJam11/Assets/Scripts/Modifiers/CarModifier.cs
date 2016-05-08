@@ -6,7 +6,7 @@ public class CarModifier : MonoBehaviour {
     protected Car car;
     protected LensToken token;
 
-	void Start () {
+	public virtual void Start () {
         car = GetComponentInParent<Car>();
         if (car == null)
             car = GetComponent<Car>();

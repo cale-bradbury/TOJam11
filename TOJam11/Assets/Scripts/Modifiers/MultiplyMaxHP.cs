@@ -7,8 +7,9 @@ public class MultiplyMaxHP : CarModifier
     public float multiplier = 2;
     LensToken token;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         token = car.maxHealth.AddLens(new Lens<float>(100, (x) => x * multiplier));
     }
 }
