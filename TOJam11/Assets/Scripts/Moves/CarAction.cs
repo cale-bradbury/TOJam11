@@ -23,9 +23,11 @@ public class CarAction : MonoBehaviour {
         //to be overridden
     }
 
-    virtual public void PerformAI(ActionCallback callback)
+    //return false if it's fucking dumb for the ai to do this action
+    virtual public bool PerformAI(ActionCallback callback)
     {
         finishedAction = callback;
+        return true;
     }
 
     public void EndTurn()

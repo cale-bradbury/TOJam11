@@ -20,13 +20,14 @@ public class CAMove : CarAction {
        car.tile.grid.ShowSelection(g, SelectCallback, Color.green);
    }
 
-    public override void PerformAI(CarAction.ActionCallback callback)
+    public override bool PerformAI(CarAction.ActionCallback callback)
     {
         base.PerformAI(callback);
         g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
         car.tile.grid.RemoveCarTiles(g);
         car.tile.grid.ColorSelection(g, Color.green);
-        Invoke("AISelect",.3f);
+        Invoke("AISelect",Settings.aiSpeed);
+        return true;
     }
 
     public void AISelect()
@@ -38,7 +39,7 @@ public class CAMove : CarAction {
    {
        canCancel = false;
        car.tile = selection;
-       Invoke("EndTurn", .3f);
+       Invoke("EndTurn", Settings.turnDelay);
    }
 
 

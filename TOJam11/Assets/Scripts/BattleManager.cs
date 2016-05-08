@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class BattleManager : MonoBehaviour {
     public enum Turn
@@ -12,9 +13,12 @@ public class BattleManager : MonoBehaviour {
 
     public static BattleManager instance;
     public Grid grid;
+    [HideInInspector]
     public List<Car> enemyCars;
+    [HideInInspector]
     public List<Car> playerCars;
     int index;
+    [HideInInspector]
     public ButtonList list;
     CarStats stats;
     private Car _selected;
@@ -116,11 +120,22 @@ public class BattleManager : MonoBehaviour {
 
         if (turn == Turn.Enemy||autoPlay)
         {
-            CarAction[] actions = cars[0].GetComponentsInChildren<CarAction>();
-            CarAction a = actions[Mathf.FloorToInt(Random.value * actions.Length)];
-            cars[0].AP -= a.ap;
+            List<CarAction> actions = cars[0].GetComponentsInChildren<CarAction>().ToList<CarAction>();
+            while (actions.Count > 0)
+            {
+                int i = Mathf.FloorToInt(Random.value * actions.Count);
+                CarAction a = actions[i];
+                if (a.PerformAI(FinishedAction))
+                {
+                    cars[0].AP -= a.ap;
+                    break;
+                }
+                else
+                {
+                    actions.RemoveAt(i);
+                }
+            }
             selected = (cars[0]);
-            a.PerformAI(FinishedAction);
         }
         else
         {

@@ -14,9 +14,10 @@ public class CAMoveWarp : CarAction {
         GetTile();
     }
 
-    public override void PerformAI(CarAction.ActionCallback callback)
+    public override bool PerformAI(CarAction.ActionCallback callback)
     {
         Perform(callback);
+        return true;
     }
 
     void GetTile()
@@ -28,7 +29,7 @@ public class CAMoveWarp : CarAction {
             return;
         }
         car.tile = g;
-        Invoke("EndTurn", .3f);
+        Invoke("EndTurn", Settings.turnDelay);
     }
 
 }

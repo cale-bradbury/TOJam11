@@ -20,13 +20,19 @@ public class CAAttack : CarAction
         car.tile.grid.ShowSelection(g, SelectCallback, Color.red);
     }
 
-    public override void PerformAI(CarAction.ActionCallback callback)
+    public override bool PerformAI(CarAction.ActionCallback callback)
     {
         base.PerformAI(callback);
         g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
-        car.tile.grid.RemoveCarTiles(g);
+        car.tile.grid.RemoveEmptyTiles(g);
+        car.tile.grid.RemoveSquadTiles(g, car.isPlayer);
+        if (g.Count == 0)
+        {
+            return false;
+        }
         car.tile.grid.ColorSelection(g, Color.red);
-        Invoke("AISelect", .5f);
+        Invoke("AISelect", Settings.aiSpeed);
+        return true;
     }
 
     public void AISelect()
@@ -43,6 +49,6 @@ public class CAAttack : CarAction
         }
         canCancel = false;
         selection.car.Damage(damage);
-        Invoke("EndTurn", .3f);
+        Invoke("EndTurn", Settings.turnDelay);
     }
 }

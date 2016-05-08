@@ -145,6 +145,14 @@ public class Grid : MonoBehaviour {
                 g.RemoveAt(i);
         }
     }
+    public void RemoveSquadTiles(List<GridTile> g, bool isPlayer)
+    {
+        for (int i = g.Count - 1; i >= 0; i--)
+        {
+            if (g[i].car != null && g[i].car.isPlayer==isPlayer)
+                g.RemoveAt(i);
+        }
+    }
     public void RemoveEmptyTiles(List<GridTile> g)
     {
         for (int i = g.Count - 1; i >= 0; i--)
