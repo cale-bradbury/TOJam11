@@ -21,6 +21,7 @@ public class Module : MonoBehaviour
 
     public Types type;
     public string name;
+    [HideInInspector]
     public string id;
     public string description;
     [HideInInspector]
