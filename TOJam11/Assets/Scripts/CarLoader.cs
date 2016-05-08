@@ -3,29 +3,28 @@ using System.Collections;
 
 public class CarLoader : MonoBehaviour {
 
-    public GameObject car;
+    public GameObject[] cars;
     Grid grid;
     public bool isPlayer = true;
-    public int count = 1;
 
 
 	// Use this for initialization
 	void Start () {
         grid = FindObjectOfType<Grid>();
-        for (int i = 0; i < count; i++ )
-            GetTile();
+        for (int i = 0; i < cars.Length; i++ )
+            GetTile(cars[i]);
 	}
 
-    void GetTile()
+    void GetTile(GameObject prefab)
     {
         GridTile g = grid.GetRandom();
         if (g.car != null)
         {
-            GetTile();
+            GetTile(prefab);
             return;
         }
 
-        Car c = Instantiate<GameObject>(car).GetComponent<Car>();
+        Car c = Instantiate<GameObject>(prefab).GetComponent<Car>();
         BattleManager.AddCar(c, g.x,g.y, isPlayer);
     }
 	
