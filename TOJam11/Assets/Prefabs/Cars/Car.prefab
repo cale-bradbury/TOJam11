@@ -17,6 +17,7 @@ GameObject:
   - 114: {fileID: 11487398}
   - 114: {fileID: 11495530}
   - 114: {fileID: 11415242}
+  - 114: {fileID: 11469900}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -108,6 +109,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ap: 5
+--- !u!114 &11469900
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f1e7499b3f9a14abde0e498b5b112f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  name: Stun Attack
+  ap: 1
+  canCancel: 0
+  prefab: {fileID: 119740, guid: 23fb3770013ca0a4a8ef1f57499c3b92, type: 2}
+  canAddToTeam: 0
+  canAddToEnemy: 1
+  range: 3
+  selectColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!114 &11485202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,6 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebb609a75a0d524689ebb3b439f9d66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
+  child: {fileID: 0}
+  parent: {fileID: 0}
   name: goodCar
   isPlayer: 1
   AP: 0
