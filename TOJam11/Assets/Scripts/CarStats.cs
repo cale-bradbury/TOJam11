@@ -2,27 +2,32 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class CarStats : CanvasFadeElement {
+public class CarStats : MonoBehaviour
+{
 
     public Text nameText;
     public Text hpText;
     public Text apText;
     Scrollbar hpBar;
     Scrollbar apBar;
-    Car last;
+    Car selected;
 
-    override protected void Start()
+    void Start()
     {
-        base.Start();
         hpBar = hpText.GetComponentInChildren<Scrollbar>();
         apBar = apText.GetComponentInChildren<Scrollbar>();
+    }
+
+    public void SetSelected(Car car)
+    {
+        selected = car;
+        ShowStats(car);
     }
 
     public void ShowStats(Car car)
     {
         if (car != null)
         {
-            Show();
             nameText.text = car.name;
             float hp = car.health.GetValue();
             hpText.text = "HP : " + hp;
@@ -30,10 +35,9 @@ public class CarStats : CanvasFadeElement {
             hpBar.size = hp / car.maxHealth.GetValue();
             apBar.size = car.AP / car.maxAP.GetValue();
         }
-        else if(last!=null)
+        else if(selected!=null)
         {
-            Hide();
+            ShowStats(selected);
         }
-        last = car;
     }
 }

@@ -9,6 +9,8 @@ public class CarAction : MonoBehaviour {
     public delegate void ActionCallback();
     public ActionCallback finishedAction;
     public int ap = 1;
+    [HideInInspector]
+    public bool canCancel = false;
 
     virtual public void Start()
     {

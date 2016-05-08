@@ -16,8 +16,18 @@ public class BattleManager : MonoBehaviour {
     public List<Car> playerCars;
     int index;
     public ButtonList list;
+    CarStats stats;
+    private Car _selected;
+    public Car selected{
+        get{return _selected;}
+        set{
+            _selected = value;
+            DisplayMoves();
+        }
+    }
 
     public bool autoPlay = false;
+    public GameObject selectedIcon;
 
 	void Awake () {
         if (instance != null)
@@ -30,7 +40,20 @@ public class BattleManager : MonoBehaviour {
 
     void Start()
     {
+        stats = FindObjectOfType<CarStats>();
         Invoke("NextTurn", .5f);
+    }
+
+    void Update()
+    {
+        if(selected){
+            selectedIcon.transform.position = selected.transform.position;
+            selectedIcon.transform.localScale = Vector3.one;
+        }
+        else
+        {
+            selectedIcon.transform.localScale = Vector3.zero;
+        }
     }
 	
     public static void AddCar(Car c, int x, int y, bool isPlayer = true)
@@ -41,45 +64,49 @@ public class BattleManager : MonoBehaviour {
         else
             instance.enemyCars.Add(c);
 	}
+
     public static void DestroyCar(Car c)
     {
         instance.enemyCars.Remove(c);
         instance.playerCars.Remove(c);
         Destroy(c.gameObject);
     }
-
-    public void DisplayMoves(Car c)
+    
+    public void DisplayMoves()
     {
+        stats.SetSelected(selected);
         list.Clear();
-        list.Add("cancel", () =>
+        list.Add("wait", () =>
         {
             grid.clickTimeout = .1f;
-            list.Hide();
-            SelectCar();
+            selected.waiting = true;
+            SelectCar(selected);
         });
-        CarAction[] actions = c.GetComponentsInChildren<CarAction>();
+        CarAction[] actions = selected.GetComponentsInChildren<CarAction>();
         for (int i = 0; i < actions.Length; i++)
         {
             CarAction a = actions[i];
-            if (c.AP >= a.ap)
+            if (selected.AP >= a.ap)
                 list.Add(a.name, () =>
                 {
+                    grid.HideSelection();
                     grid.clickTimeout = .1f;
-                    c.AP -= a.ap;
-                    list.Hide();
+                    selected.AP -= a.ap;
+                    list.Clear();
+                    list.Add("cancel", () => { if (a.canCancel) { selected.AP += a.ap; SelectCar(selected); } });
                     a.Perform(FinishedAction);
                 });
         }
-        list.MoveToMouse();
     }
 
     public void FinishedAction(){
-        instance.grid.HideSelection();
-        SelectCar();
+        SelectCar(selected);
     }
 
-    public void SelectCar()
+    public void SelectCar(Car tryToSelect = null)
     {
+        grid.HideSelection();
+        list.Clear();
         List<Car> cars = GetValidCars(turn == Turn.Enemy ? enemyCars : playerCars);
         if (cars.Count == 0)
         {
@@ -92,6 +119,7 @@ public class BattleManager : MonoBehaviour {
             CarAction[] actions = cars[0].GetComponentsInChildren<CarAction>();
             CarAction a = actions[Mathf.FloorToInt(Random.value * actions.Length)];
             cars[0].AP -= a.ap;
+            selected = (cars[0]);
             a.PerformAI(FinishedAction);
         }
         else
@@ -101,21 +129,24 @@ public class BattleManager : MonoBehaviour {
             {
                 select.Add(cars[i].tile);
             }
-            grid.ShowSelection(select, OnCarSelect, Color.white);
-            
+            if (tryToSelect != null && tryToSelect.CanSelect())
+                selected = tryToSelect;
+            else
+                selected = cars[0];
+            grid.ShowSelection(select, OnCarSelect, Color.white);            
         }
     }
 
     void OnCarSelect(GridTile tile)
     {
-        DisplayMoves(tile.car);
+        selected = tile.car;
     }
 
     List<Car> GetValidCars(List<Car> cars)
     {
         List<Car> valid = new List<Car>();
         foreach (Car c in cars)
-            if (c.HasEnoughAP())
+            if (c.HasEnoughAP()&&!c.waiting)
                 valid.Add(c);
         return valid;
     }

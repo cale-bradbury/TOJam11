@@ -34,6 +34,7 @@ public class Car : MonoBehaviour {
     public bool isPlayer;
     public float AP = 0;
     public CarAction[] actions;
+    public bool waiting = true;
 
     public LensedValue<float> health;
     public LensedValue<float> maxHealth;
@@ -81,10 +82,20 @@ public class Car : MonoBehaviour {
         return false;
     }
 
+    public bool CanSelect()
+    {
+        if(waiting)
+            return false;
+        if (!HasEnoughAP())
+            return false;
+         return true;
+    }
+
     void BeginTurn(Car c)
     {
         AP += turnAP.GetValue();
         AP = Mathf.Max(AP, maxAP.GetValue());
+        waiting = false;
     }
 
     public void Damage(float damage)

@@ -44,6 +44,6 @@ public class shaderSaver : MonoBehaviour {
 		t2d.Apply();
 		string path = Application.dataPath + p+".png";
 		Debug.Log("begin save to "+path);
-		File.WriteAllBytes(path,t2d.EncodeToPNG());
+        File.WriteAllBytes(path, t2d.EncodeToPNG());
 	}
 }

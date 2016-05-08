@@ -9,6 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 456066}
   - 114: {fileID: 11472130}
+  - 114: {fileID: 11403632}
+  - 114: {fileID: 11499606}
+  - 114: {fileID: 11470564}
+  - 114: {fileID: 11437102}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -28,6 +32,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11403632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c273006c8af97764c925adb4202f93a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
+  isPlayer: 1
+--- !u!114 &11437102
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c273006c8af97764c925adb4202f93a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
+  isPlayer: 0
+--- !u!114 &11470564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c273006c8af97764c925adb4202f93a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
+  isPlayer: 0
 --- !u!114 &11472130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42,6 +85,20 @@ MonoBehaviour:
   gridSize: {x: 10, y: 10}
   unitSize: 1
   gridTilePrefab: {fileID: 138474, guid: dffa4e8da76f37f4094b48cd2aac553b, type: 2}
+  clickTimeout: 0
+--- !u!114 &11499606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 175286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c273006c8af97764c925adb4202f93a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 149316, guid: 0050b4556540cc04d8c07d1d20efdb25, type: 2}
+  isPlayer: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
