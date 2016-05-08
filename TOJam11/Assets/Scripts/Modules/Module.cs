@@ -26,10 +26,14 @@ public class Module : MonoBehaviour
     public int count;
     [HideInInspector]
     public Socket[] sockets;
-    [HideInInspector]
     public Socket parent;
 
     void Start()
+    {
+        Scan();
+    }
+
+    public void Scan()
     {
         sockets = GetComponentsInChildren<Socket>();
         foreach (Socket s in sockets)

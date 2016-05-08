@@ -14,21 +14,28 @@ public class CarBuilder : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        cycleModules = inventory.GetModulesOfType(activeSocket.type);
+        
 	}
+
+    public void SetSocket(Socket socket)
+    {
+        activeSocket = socket;
+        cycleModules = inventory.GetModulesOfType(activeSocket.type);
+    }
     
-    void CycleSocket(){
+    public void CycleSocket(){
         socketIndex++;
         socketIndex %= activeSocket.parent.sockets.Length;
         activeSocket = activeSocket.parent.sockets[socketIndex];
         cycleModules = inventory.GetModulesOfType(activeSocket.type);
     }
 
-    void CycleModule()
+    public void CycleModule()
     {
         cycleIndex++;
         cycleIndex %= cycleModules.Length;
         Module m = Instantiate<Module>(cycleModules[cycleIndex]);
+        m.Scan();
         m.AddToSocket(activeSocket);
     }
 }
