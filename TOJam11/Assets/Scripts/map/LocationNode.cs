@@ -5,7 +5,9 @@ public class LocationNode : MonoBehaviour {
     public string locationName;
     public string description;
     public bool isStart = false;
+    public bool isEnd = false;
     public bool hasEncounter = true;
+    public BattleManager encounter;
     public float encounterChance = 0f;      // Percenatage chance of an encounter taking place while approaching this node.
     public Vector3 defaultScale = new Vector3(0.6f, 0.6f, 0.6f);
     public Vector3 hoverScale = new Vector3(0.8f, 0.8f, 0.8f);
