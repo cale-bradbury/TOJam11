@@ -5,6 +5,7 @@ public class LocationNode : MonoBehaviour {
     public string locationName;
     public string description;
     public bool isStart = false;
+    public bool hasEncounter = true;
     public float encounterChance = 0f;      // Percenatage chance of an encounter taking place while approaching this node.
     [HideInInspector]
     public  List<LocationConnection> Connections = new List<LocationConnection>();
@@ -22,7 +23,7 @@ public class LocationNode : MonoBehaviour {
     private bool isScaledUp = false;
     private bool showingTooltip = false;
 
-    void Start() {
+    void Awake() {
         rend = GetComponent<Renderer>();        
     }
 
@@ -117,9 +118,21 @@ public class LocationNode : MonoBehaviour {
         {
             Debug.Log("There's going to be a fight!");
             map.SetPause(true);
-            // need to handle changing between encounter and map.
-            
+            // TODO:
+            // Maybe play an animation before starting the encounter.
+            // Probably need to pass in some info about the encounter.
+            map.StartEncounter(this, true);
         }
+    }
+
+    public void StartEncounter()
+    {
+        if (hasEncounter)
+        {
+            map.SetPause(true);
+            map.StartEncounter(this, false);
+        }
+        
     }
 
     void ShowTooltip() {

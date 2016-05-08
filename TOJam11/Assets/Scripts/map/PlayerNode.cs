@@ -33,7 +33,7 @@ public class PlayerNode : MonoBehaviour {
             if(distance < 0.05f)
             {
                 SetLocation(targetLocation);
-                
+                currentLocation.StartEncounter();
             }            
         }
     }

@@ -13,7 +13,9 @@ public class MapController : MonoBehaviour {
     public PlayerNode playerNode;
     [HideInInspector]
     public LocationNode[] nodes;
-    
+    [HideInInspector]
+    public Overworld overworld;
+
 
 
     void Start () {
@@ -70,12 +72,20 @@ public class MapController : MonoBehaviour {
     public void EnableTooltip()
     {
         locationTooltip.SetActive(true);
-        //locationTooltip.active = true;
     }
 
     public void DisableTooltip()
     {
         locationTooltip.SetActive(false);
-        //locationTooltip.active = false;
+    }
+
+    /*
+     * Requires a reference to the node the player is responsible for the encounter. If the encounter is random,
+     * a bool must be passed in. This is because a node can potential trigger randon encounter AND/OR partially 
+     * scripted ones.
+     */
+    public void StartEncounter(LocationNode node, bool isRandomEncounter)
+    {
+        overworld.StartEncounter(node, isRandomEncounter);
     }
 }
