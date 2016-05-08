@@ -89,12 +89,13 @@ public class MapController : MonoBehaviour {
     {
         if (node.encounterPrefab)
         {
+            SetPause(true);
             EndActiveEncounter();
             childContainer.SetActive(false);
             // TODO: disable camera?
             activeEncounter = Instantiate<GameObject>(node.encounterPrefab);
             activeEncounter.transform.position = Vector3.zero;
-            //activeEncounter = EndActiveEncounter;
+            activeEncounter.GetComponent<BattleManager>().EndGame = EndActiveEncounter;
         }
     }
 
@@ -102,8 +103,11 @@ public class MapController : MonoBehaviour {
     {
         if(activeEncounter != null)
         {
-            Destroy(activeEncounter);
+            GameObject temp = activeEncounter;
             activeEncounter = null;
+            Destroy(temp);
+            childContainer.SetActive(true);
+            SetPause(false);
         }
     }
 }
