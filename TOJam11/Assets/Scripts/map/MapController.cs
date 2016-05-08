@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class MapController : MonoBehaviour {
     public GameObject playerNodePrefab;
     public GameObject locationTooltip;
+    public GameObject childContainer;
     private Text nameText; 
     private Text descriptionText;
     [HideInInspector]
@@ -15,7 +16,8 @@ public class MapController : MonoBehaviour {
     public LocationNode[] nodes;
     [HideInInspector]
     public Overworld overworld; // Not currently in use. Was supposed to reference Overworld, which extends Andrew's GameState class.
-
+    private GameObject activeEncounter = null;
+    private bool activeEncounterIsFinal = false;
 
 
     void Start () {
@@ -86,11 +88,35 @@ public class MapController : MonoBehaviour {
      */
     public void StartEncounter(LocationNode node, bool isRandomEncounter)
     {
-        if (node.encounter)
+        if (node.encounterPrefab)
         {
-            // init node.encounter
-            // after encounter, unpause this map.
-            Debug.Log("Start encounter!");
+            SetPause(true);
+            EndActiveEncounter();
+            
+            // TODO: disable camera?
+
+            childContainer.SetActive(false);
+            activeEncounterIsFinal = node.isEnd;
+            activeEncounter = Instantiate<GameObject>(node.encounterPrefab);
+            activeEncounter.transform.position = Vector3.zero;
+            activeEncounter.GetComponent<BattleManager>().EndGame = EndActiveEncounter;
+        }
+    }
+
+    public void EndActiveEncounter()
+    {
+        if(activeEncounter != null)
+        {
+            GameObject temp = activeEncounter;
+            activeEncounter = null;
+            Destroy(temp);
+            childContainer.SetActive(true);
+            SetPause(false);
+
+            if (activeEncounterIsFinal)
+            {
+                Debug.Log("You won!");
+            }
         }
     }
 }
