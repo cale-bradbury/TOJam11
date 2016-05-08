@@ -517,7 +517,7 @@ MonoBehaviour:
   isStart: 0
   isEnd: 0
   hasEncounter: 1
-  encounterPrefab: {fileID: 0}
+  encounterPrefab: {fileID: 111904, guid: f4981621546758c46bb17e1e36b0c0d5, type: 2}
   encounterChance: 30
   defaultScale: {x: 0.6, y: 0.6, z: 0.6}
   hoverScale: {x: 0.8, y: 0.8, z: 0.8}
@@ -720,7 +720,7 @@ MonoBehaviour:
   isStart: 0
   isEnd: 0
   hasEncounter: 1
-  encounterPrefab: {fileID: 0}
+  encounterPrefab: {fileID: 111904, guid: f4981621546758c46bb17e1e36b0c0d5, type: 2}
   encounterChance: 10
   defaultScale: {x: 0.6, y: 0.6, z: 0.6}
   hoverScale: {x: 0.8, y: 0.8, z: 0.8}
@@ -1313,7 +1313,7 @@ MonoBehaviour:
   isStart: 0
   isEnd: 1
   hasEncounter: 1
-  encounterPrefab: {fileID: 0}
+  encounterPrefab: {fileID: 111904, guid: f4981621546758c46bb17e1e36b0c0d5, type: 2}
   encounterChance: 50
   defaultScale: {x: 0.6, y: 0.6, z: 0.6}
   hoverScale: {x: 0.8, y: 0.8, z: 0.8}
@@ -1765,7 +1765,7 @@ MonoBehaviour:
   isStart: 0
   isEnd: 0
   hasEncounter: 1
-  encounterPrefab: {fileID: 0}
+  encounterPrefab: {fileID: 111904, guid: f4981621546758c46bb17e1e36b0c0d5, type: 2}
   encounterChance: 80
   defaultScale: {x: 0.6, y: 0.6, z: 0.6}
   hoverScale: {x: 0.8, y: 0.8, z: 0.8}

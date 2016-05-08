@@ -17,6 +17,7 @@ public class MapController : MonoBehaviour {
     [HideInInspector]
     public Overworld overworld; // Not currently in use. Was supposed to reference Overworld, which extends Andrew's GameState class.
     private GameObject activeEncounter = null;
+    private bool activeEncounterIsFinal = false;
 
 
     void Start () {
@@ -93,6 +94,7 @@ public class MapController : MonoBehaviour {
             EndActiveEncounter();
             childContainer.SetActive(false);
             // TODO: disable camera?
+            activeEncounterIsFinal = node.isEnd;
             activeEncounter = Instantiate<GameObject>(node.encounterPrefab);
             activeEncounter.transform.position = Vector3.zero;
             activeEncounter.GetComponent<BattleManager>().EndGame = EndActiveEncounter;
@@ -108,6 +110,11 @@ public class MapController : MonoBehaviour {
             Destroy(temp);
             childContainer.SetActive(true);
             SetPause(false);
+
+            if (activeEncounterIsFinal)
+            {
+                Debug.Log("You won!");
+            }
         }
     }
 }

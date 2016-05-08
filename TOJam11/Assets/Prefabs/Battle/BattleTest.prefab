@@ -1651,7 +1651,7 @@ MonoBehaviour:
   enemyCars: []
   playerCars: []
   list: {fileID: 11447106}
-  autoPlay: 0
+  autoPlay: 1
   selectedIcon: {fileID: 179874}
 --- !u!114 &11462242
 MonoBehaviour:
@@ -1770,7 +1770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 149316, guid: fa43dff810637774b9ddaa149e92c6fa, type: 2}
   isPlayer: 0
-  count: 4
+  count: 1
 --- !u!114 &11479178
 MonoBehaviour:
   m_ObjectHideFlags: 1
