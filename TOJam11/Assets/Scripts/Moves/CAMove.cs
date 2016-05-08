@@ -14,6 +14,7 @@ public class CAMove : CarAction {
     override public void Perform(ActionCallback callback)
     {
        base.Perform(callback);
+       canCancel = true;
        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
        car.tile.grid.RemoveCarTiles(g);
        car.tile.grid.ShowSelection(g, SelectCallback, Color.green);
@@ -35,6 +36,7 @@ public class CAMove : CarAction {
 
    void SelectCallback(GridTile selection)
    {
+       canCancel = false;
        car.tile = selection;
        Invoke("EndTurn", .3f);
    }

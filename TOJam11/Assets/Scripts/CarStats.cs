@@ -21,6 +21,7 @@ public class CarStats : MonoBehaviour
     public void SetSelected(Car car)
     {
         selected = car;
+        ShowStats(car);
     }
 
     public void ShowStats(Car car)

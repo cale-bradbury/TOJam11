@@ -80,7 +80,7 @@ public class BattleManager : MonoBehaviour {
         {
             grid.clickTimeout = .1f;
             selected.waiting = true;
-            SelectCar();
+            SelectCar(selected);
         });
         CarAction[] actions = selected.GetComponentsInChildren<CarAction>();
         for (int i = 0; i < actions.Length; i++)
@@ -93,14 +93,14 @@ public class BattleManager : MonoBehaviour {
                     grid.clickTimeout = .1f;
                     selected.AP -= a.ap;
                     list.Clear();
-                    list.Add("cancel", () => { selected.AP += a.ap; SelectCar(selected);});
+                    list.Add("cancel", () => { if (a.canCancel) { selected.AP += a.ap; SelectCar(selected); } });
                     a.Perform(FinishedAction);
                 });
         }
     }
 
     public void FinishedAction(){
-        SelectCar();
+        SelectCar(selected);
     }
 
     public void SelectCar(Car tryToSelect = null)

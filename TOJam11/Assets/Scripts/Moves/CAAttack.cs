@@ -14,6 +14,7 @@ public class CAAttack : CarAction
 
     override public void Perform(ActionCallback callback)
     {
+        canCancel = true;
         base.Perform(callback);
         g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
         car.tile.grid.ShowSelection(g, SelectCallback, Color.red);
@@ -40,6 +41,7 @@ public class CAAttack : CarAction
             Perform(finishedAction);
             return;
         }
+        canCancel = false;
         selection.car.Damage(damage);
         Invoke("EndTurn", .3f);
     }
