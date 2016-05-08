@@ -3,5 +3,23 @@ using System.Collections;
 
 public class Socket : MonoBehaviour
 {
-    public Modules.Types type;
+    public Module.Types type = Module.Types.Chassis;
+
+    [HideInInspector]
+    public Module child;
+    [HideInInspector]
+    public Module parent;
+
+    public void SetChild(Module m)
+    {
+        if (child != null)
+        {
+            Destroy(child.gameObject);
+        }
+        child = m;
+        m.transform.parent = transform;
+        m.transform.localPosition = Vector3.zero;
+        m.transform.localEulerAngles = Vector3.zero;
+        m.transform.localScale = Vector3.one;
+    }
 }

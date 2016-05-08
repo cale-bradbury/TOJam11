@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2321360}
   - 114: {fileID: 11443556}
   m_Layer: 0
-  m_Name: ChassisTest2
+  m_Name: Wheel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 180964}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &6594478
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -87,8 +87,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abaee35a7e304864db0812576a9cabf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
-  name: Chassis2
+  type: 3
+  name: Wheel1
   description: 
   count: 0
 --- !u!1001 &100100000

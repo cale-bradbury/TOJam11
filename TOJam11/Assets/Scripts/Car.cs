@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Car : MonoBehaviour {
+public class Car : Socket {
 
     private GridTile _tile;
     public GridTile tile
