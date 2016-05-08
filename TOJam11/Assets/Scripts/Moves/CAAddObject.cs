@@ -28,17 +28,17 @@ public class CAAddObject : CarAction
         base.PerformAI(callback);
 
         g = grid.GetSuroundingDiamond(car.tile, range);
-        grid.RemoveEmptyTiles(g);
         if (!canAddToEnemy)
             grid.RemoveSquadTiles(g, !car.isPlayer);
         if (!canAddToTeam)
             grid.RemoveSquadTiles(g, car.isPlayer);
+        grid.ColorSelection(g, selectColor);
+        grid.RemoveEmptyTiles(g);
 
         if (g.Count == 0)
         {
             return false;
         }
-        grid.ColorSelection(g, selectColor);
         Invoke("AISelect", Settings.aiSpeed);
         return true;
     }

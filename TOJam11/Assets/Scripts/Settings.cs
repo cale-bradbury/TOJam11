@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Settings {
 
-    public static float aiSpeed = .1f;
-    public static float turnDelay = .05f;
+    public static float aiSpeed = .5f;
+    public static float turnDelay = .2f;
 
 }

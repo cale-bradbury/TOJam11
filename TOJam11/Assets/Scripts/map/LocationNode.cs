@@ -5,8 +5,12 @@ public class LocationNode : MonoBehaviour {
     public string locationName;
     public string description;
     public bool isStart = false;
+    public bool isEnd = false;
     public bool hasEncounter = true;
+    public BattleManager encounter;
     public float encounterChance = 0f;      // Percenatage chance of an encounter taking place while approaching this node.
+    public Vector3 defaultScale = new Vector3(0.6f, 0.6f, 0.6f);
+    public Vector3 hoverScale = new Vector3(0.8f, 0.8f, 0.8f);
     [HideInInspector]
     public  List<LocationConnection> Connections = new List<LocationConnection>();
     [HideInInspector]
@@ -33,8 +37,7 @@ public class LocationNode : MonoBehaviour {
         {
             HandleClick();
             HandleHoverOver();
-        }
-             
+        }             
     }
 
     void OnMouseExit()
@@ -46,7 +49,7 @@ public class LocationNode : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && playerNode != null && isSelectable)
         {
             playerNode.SetTargetLocation(this);
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = defaultScale;
             isScaledUp = false;
             SetColor(activeColor);
         }
@@ -57,7 +60,7 @@ public class LocationNode : MonoBehaviour {
         if (!isScaledUp && isSelectable)
         {
             isScaledUp = true;
-            transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            transform.localScale = hoverScale;
             SetColor(hoverColor);
         }
 
@@ -72,7 +75,7 @@ public class LocationNode : MonoBehaviour {
         if (isScaledUp)
         {
             isScaledUp = false;
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = defaultScale;
             SetColor(selectableColor);
         }
 

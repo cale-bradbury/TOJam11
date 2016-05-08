@@ -14,7 +14,7 @@ public class MapController : MonoBehaviour {
     [HideInInspector]
     public LocationNode[] nodes;
     [HideInInspector]
-    public Overworld overworld;
+    public Overworld overworld; // Not currently in use. Was supposed to reference Overworld, which extends Andrew's GameState class.
 
 
 
@@ -86,6 +86,11 @@ public class MapController : MonoBehaviour {
      */
     public void StartEncounter(LocationNode node, bool isRandomEncounter)
     {
-        overworld.StartEncounter(node, isRandomEncounter);
+        if (node.encounter)
+        {
+            // init node.encounter
+            // after encounter, unpause this map.
+            Debug.Log("Start encounter!");
+        }
     }
 }

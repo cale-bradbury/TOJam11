@@ -16,21 +16,21 @@ public class CAAttack : CarAction
     {
         canCancel = true;
         base.Perform(callback);
-        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
-        car.tile.grid.ShowSelection(g, SelectCallback, Color.red);
+        g = grid.GetSuroundingDiamond(car.tile, distance);
+        grid.ShowSelection(g, SelectCallback, Color.red);
     }
 
     public override bool PerformAI(CarAction.ActionCallback callback)
     {
         base.PerformAI(callback);
-        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
-        car.tile.grid.RemoveEmptyTiles(g);
-        car.tile.grid.RemoveSquadTiles(g, car.isPlayer);
+        g = grid.GetSuroundingDiamond(car.tile, distance);
+        grid.ColorSelection(g, Color.red);
+        grid.RemoveEmptyTiles(g);
+        grid.RemoveSquadTiles(g, car.isPlayer);
         if (g.Count == 0)
         {
             return false;
         }
-        car.tile.grid.ColorSelection(g, Color.red);
         Invoke("AISelect", Settings.aiSpeed);
         return true;
     }
