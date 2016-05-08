@@ -32,29 +32,28 @@ public class CarBuilderEditor : Editor {
         if (builder.activeSocket == null)
             builder.SetSocket(builder.car);
 
+        EditorGUILayout.BeginHorizontal();
+        //cycle through the potential pieces that can go in the current socket
+        if (GUILayout.Button("Cycle Module"))
+            builder.CycleModule();
+        string[] names = new string[builder.cycleModules.Length];
+        for(int i = 0; i<builder.cycleModules.Length; i++){
+            names[i] = builder.cycleModules[i].name;
+        }
+        int j = EditorGUILayout.Popup(builder.cycleIndex, names);
+        if (j != builder.cycleIndex)
+            builder.SelectModule(j);
+        EditorGUILayout.EndHorizontal();
+
         //Show Parent sockets so one can work back up the tree
-        EditorGUILayout.LabelField("parents");
+        EditorGUILayout.LabelField("parent Sockets");
         ShowParents();
 
-        //cycle through the currently selected socket
-        if (GUILayout.Button("Cycle"))
-            builder.CycleModule();
+        EditorGUILayout.LabelField("child Sockets");
+        ShowChildren();
 
-        if (builder.activeSocket.child)
-        {
-            foreach (Socket s in builder.activeSocket.child.sockets)
-            {
-                if (GUILayout.Button(s.type.ToString()))
-                {
-                    builder.SetSocket(s);
-                    needsRepaint = true;
-                }
-            }
-        }
-        Debug.Log(builder.activeSocket);
-
-       // if (needsRepaint)
-            //Repaint();
+        if (needsRepaint)
+            Repaint();
     }
 
     void ShowParents()
@@ -66,12 +65,28 @@ public class CarBuilderEditor : Editor {
             p.Add(s.parent);
             s = s.parent.parent;
         }
+        p.Reverse();
         foreach (Module m in p)
         {
             if (GUILayout.Button(m.name))
             {
                 builder.SetSocket(m.parent);
                 needsRepaint = true;
+            }
+        }
+    }
+
+    void ShowChildren()
+    {
+        if (builder.activeSocket.child)
+        {
+            foreach (Socket s in builder.activeSocket.child.sockets)
+            {
+                if (GUILayout.Button(s.gameObject.name))
+                {
+                    builder.SetSocket(s);
+                    needsRepaint = true;
+                }
             }
         }
     }

@@ -26,6 +26,7 @@ public class Module : MonoBehaviour
     public int count;
     [HideInInspector]
     public Socket[] sockets;
+    [HideInInspector]
     public Socket parent;
 
     void Start()

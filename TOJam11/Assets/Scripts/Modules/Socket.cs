@@ -7,7 +7,7 @@ public class Socket : MonoBehaviour
 
     [HideInInspector]
     public Module child;
-
+    [HideInInspector]
     public Module parent;
 
     public void SetChild(Module m)

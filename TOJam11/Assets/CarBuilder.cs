@@ -8,8 +8,10 @@ public class CarBuilder : MonoBehaviour {
     public Car car;
     public GameObject emptyCarPrefab;
     public Socket activeSocket;
-    Module[] cycleModules;
-    int cycleIndex = 0;
+    [HideInInspector]
+    public Module[] cycleModules;
+    [HideInInspector]
+    public int cycleIndex = 0;
     int socketIndex = 0;    
 
 	// Use this for initialization
@@ -22,20 +24,29 @@ public class CarBuilder : MonoBehaviour {
         activeSocket = socket;
         cycleModules = inventory.GetModulesOfType(activeSocket.type);
     }
-    
-    public void CycleSocket(){
-        socketIndex++;
+
+    public void SelectSocket(int i)
+    {
+        socketIndex = i;
         socketIndex %= activeSocket.parent.sockets.Length;
         activeSocket = activeSocket.parent.sockets[socketIndex];
         cycleModules = inventory.GetModulesOfType(activeSocket.type);
     }
-
-    public void CycleModule()
+    public void CycleSocket()
     {
-        cycleIndex++;
+        SelectSocket(socketIndex + 1);
+    }
+
+    public void SelectModule(int i)
+    {
+        cycleIndex = i;
         cycleIndex %= cycleModules.Length;
         Module m = Instantiate<Module>(cycleModules[cycleIndex]);
         m.Scan();
         m.AddToSocket(activeSocket);
+    }
+    public void CycleModule()
+    {
+        SelectModule(cycleIndex + 1);
     }
 }

@@ -40,7 +40,8 @@ public class Car : Socket {
     public LensedValue<float> maxHealth;
     public LensedValue<float> maxAP;
     public LensedValue<float> turnAP;
-    public LensedValue<float> defence;
+    public LensedValue<float> defense;
+    public LensedValue<float> handling;
 
     void Awake()
     {
@@ -50,7 +51,8 @@ public class Car : Socket {
         health.AddLens(new Lens<float>(int.MaxValue, (x) => { return Mathf.Min(x, maxHealth.GetValue()); }));
         maxAP = new LensedValue<float>(0);
         turnAP = new LensedValue<float>(0);
-        defence = new LensedValue<float>(0);
+        defense = new LensedValue<float>(0);
+        handling = new LensedValue<float>(0);
     }
 
     void Start()
@@ -101,8 +103,8 @@ public class Car : Socket {
 
     public void Damage(float damage)
     {
-        defence.initialValue = damage;
-        var d = defence.GetValue();
+        defense.initialValue = damage;
+        var d = defense.GetValue();
         health.AddLens(new Lens<float>(0, x => x - d));
         CheckHealth();
     }

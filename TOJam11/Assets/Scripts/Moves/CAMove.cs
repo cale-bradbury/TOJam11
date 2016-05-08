@@ -16,7 +16,7 @@ public class CAMove : CarAction
     {
         base.Perform(callback);
         canCancel = true;
-        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
+        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance+Mathf.RoundToInt(car.handling.GetValue()));
         car.tile.grid.RemoveCarTiles(g);
         car.tile.grid.ShowSelection(g, SelectCallback, Color.green);
     }
@@ -24,7 +24,7 @@ public class CAMove : CarAction
     public override bool PerformAI(CarAction.ActionCallback callback)
     {
         base.PerformAI(callback);
-        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance);
+        g = car.tile.grid.GetSuroundingDiamond(car.tile, distance + Mathf.RoundToInt(car.handling.GetValue()));
         car.tile.grid.RemoveCarTiles(g);
         if (g.Count == 0)
             return false;
