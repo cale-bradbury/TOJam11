@@ -173,7 +173,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smallPropPrefabs:
-  - {fileID: 129504, guid: 7ee9894ddd12ea044a18f85bd28d8695, type: 2}
+  - {fileID: 161054, guid: fe97066490d908c4d881be61e3b9ccbd, type: 2}
+  - {fileID: 145234, guid: 46d3adec22bec3949977f85dc2376fc2, type: 2}
+  - {fileID: 156034, guid: 618d0d531f2fa004992d3b1dff83a6b3, type: 2}
+  - {fileID: 174506, guid: 8786a31ee263aeb4dbb13590d4cf5534, type: 2}
+  - {fileID: 177772, guid: 30b05f7323d6d41468bf0498234637aa, type: 2}
+  - {fileID: 131798, guid: e65722f8050d984469e100f342ab4cf7, type: 2}
+  - {fileID: 111702, guid: 309ef16d17f0e69448859f510f0fccb4, type: 2}
   largePropPrefabs:
   - {fileID: 172768, guid: 50a63bc1933b26a4ba16243ef195cfd2, type: 2}
   spawnRate: 0.5
