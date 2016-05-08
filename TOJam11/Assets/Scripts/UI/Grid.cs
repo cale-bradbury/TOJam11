@@ -52,9 +52,7 @@ public class Grid : MonoBehaviour {
             return;
         if (selection != null && selection.IndexOf(tile)!=-1)
         {
-            selection = null;
             selectionCallback(tile);
-            selectionCallback = null;
         }
     }
     
@@ -75,11 +73,19 @@ public class Grid : MonoBehaviour {
 
     public void HideSelection()
     {
+        selection = null;
+        selectionCallback = null;
+        ColorAll(Color.white);
+    }
+
+    public void ColorAll(Color color)
+    {
+
         for (int i = 0; i < gridTiles.GetLength(0); i++)
         {
             for (int j = 0; j < gridTiles.GetLength(1); j++)
             {
-                gridTiles[i, j].color = Color.white;
+                gridTiles[i, j].color = color;
             }
         }
     }
