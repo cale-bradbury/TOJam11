@@ -78,8 +78,13 @@ public class BattleManager : MonoBehaviour {
         Destroy(c.gameObject);
         if (instance.enemyCars.Count == 0 || instance.playerCars.Count == 0)
         {
-            instance.EndGame();
+            instance.Invoke("EndCallback", 1);
         }
+    }
+
+    void EndCallback()
+    {
+        EndGame();
     }
     
     public void DisplayMoves()
